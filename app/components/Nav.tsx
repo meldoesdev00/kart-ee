@@ -7,6 +7,7 @@ const LINKS = [
   { label: "Kardiakadeemia",  href: "/kardiakadeemia" },
   { label: "Võistlussarjad",  href: "/voistlussarjad" },
   { label: "Tulemused",       href: "/tulemused" },
+  { label: "Galerii",         href: "/galerii" },
   { label: "Meist",           href: "/meist" },
 ];
 

@@ -20,6 +20,7 @@ function LogoItem({ src }: { src: string }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
+      className="sponsor-item"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -58,7 +59,7 @@ export default function SponsorsSection() {
         <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
       </div>
       <div style={{ maxWidth: W, margin: "0 auto", padding: "48px 40px 56px" }}>
-        <div style={{
+        <div className="sponsors-grid" style={{
           display: "flex",
           flexDirection: "row",
           gap: "8px",

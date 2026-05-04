@@ -145,36 +145,37 @@ body {
 
   /* ── Typography: clear hierarchy, readable sizes ─────────── */
   .subpage-hero h1 {
-    font-size: 38px !important;
-    line-height: 1.0 !important;
-    letter-spacing: -0.03em !important;
-    margin-bottom: 14px !important;
+    font-size: 44px !important;
+    line-height: 0.97 !important;
+    letter-spacing: -0.035em !important;
+    margin-bottom: 16px !important;
     max-width: 100% !important;
   }
   .subpage-hero p {
-    font-size: 14px !important;
+    font-size: 15px !important;
     line-height: 1.65 !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 22px !important;
     max-width: 100% !important;
   }
   .subpage-hero .pre-label {
     margin-bottom: 12px !important;
   }
 
+  /* section h2 must read as a clear section title */
   .section-pad h2 {
-    font-size: 26px !important;
-    line-height: 1.1 !important;
-    letter-spacing: -0.025em !important;
-    margin-bottom: 12px !important;
+    font-size: 34px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.03em !important;
+    margin-bottom: 14px !important;
   }
   .section-pad h3 {
-    font-size: 16px !important;
+    font-size: 20px !important;
     margin-bottom: 8px !important;
   }
   /* ── Section header → content gap ────────────────────────── */
   .section-header-grid {
-    margin-bottom: 18px !important;
-    gap: 10px !important;
+    margin-bottom: 20px !important;
+    gap: 12px !important;
   }
 
   /* ── Edge-to-edge maps/iframes on mobile ─────────────────── */
@@ -183,6 +184,41 @@ body {
     margin-right: -20px !important;
     width: calc(100% + 40px) !important;
     border-radius: 0 !important;
+  }
+
+  /* ── Sponsors: 3×3 grid ───────────────────────────────────── */
+  .sponsors-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 0 !important;
+  }
+  .sponsor-item {
+    padding: 14px 10px !important;
+  }
+  .sponsor-item img {
+    max-width: 90px !important;
+    height: 30px !important;
+  }
+
+  /* ── Hide "Vaata kõiki" in uudised on mobile ──────────────── */
+  .uudised-vaata-koiki {
+    display: none !important;
+  }
+
+  /* ── Tulemused result row: keep label+btn on same line ────── */
+  .result-row {
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+  }
+  .result-row .result-label {
+    flex: 1 !important;
+    min-width: 0 !important;
+    font-size: 14px !important;
+  }
+  .result-row .result-btn {
+    flex-shrink: 0 !important;
+    padding: 8px 14px !important;
+    font-size: 12px !important;
   }
 
   /* ── Hero (landing) ───────────────────────────────────────── */
@@ -332,16 +368,13 @@ body {
     padding-right: 16px !important;
   }
   .subpage-hero h1 {
-    font-size: 32px !important;
-  }
-  .subpage-hero p {
-    font-size: 13px !important;
+    font-size: 36px !important;
   }
   .uudised-header h2 {
-    font-size: 24px !important;
+    font-size: 28px !important;
   }
   .section-pad h2 {
-    font-size: 22px !important;
+    font-size: 28px !important;
   }
   .stats-grid {
     grid-template-columns: 1fr 1fr !important;

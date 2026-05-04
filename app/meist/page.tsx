@@ -22,6 +22,13 @@ const JUHATUS = [
   { name: "Timo Raudsik", email: "kart@kart.ee" },
 ];
 
+const REKVISIIDID = [
+  { label: "Nimi",         value: "MTÜ Eesti Kardiliit" },
+  { label: "Aadress",      value: "Pirni tn 3, Kristiine linnaosa, Tallinn, Harju maakond" },
+  { label: "Registrikood", value: "80106439" },
+  { label: "Telefon",      value: "+372 520 0657" },
+];
+
 const MILESTONES = [
   { year: "1999", text: "Eesti Kardiliit asutatud. Missioon: kardispordi arendamine, toetamine ja propageerimine Eestis." },
   { year: "2012", text: "Esimene rahvusvaheline esindus CIK-FIA Euroopa meistrivõistlustel." },
@@ -188,15 +195,24 @@ export default function MeistPage() {
                 }}>
                   Rekvisiidid
                 </h2>
-                <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                  <div>
-                    <span style={{ fontSize: "15px", fontWeight: 400, color: "rgba(0,0,0,0.6)", fontFamily: "Aspekta" }}>
-                      MTÜ Eesti Kardiliit <br />
-                      Harju maakond, Tallinn, Kristiine linnaosa, Pirni tn 3 <br />
-                      Registrikood 80106439 <br />
-                      +372 520 0657
-                    </span>
-                  </div>
+                <div style={{ borderTop: "1px solid rgba(0,0,0,0.1)" }}>
+                  {REKVISIIDID.map((r, i) => (
+                    <div key={i} style={{
+                      padding: "20px 0",
+                      borderBottom: "1px solid rgba(0,0,0,0.07)",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "baseline",
+                      gap: "16px",
+                    }}>
+                      <span style={{ fontSize: "13px", color: "rgba(0,0,0,0.35)", fontWeight: 400, flexShrink: 0 }}>
+                        {r.label}
+                      </span>
+                      <span style={{ fontSize: "15px", fontWeight: 400, color: "#0a0a0a", textAlign: "right" }}>
+                        {r.value}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

@@ -130,6 +130,7 @@ export default function TulemUsedPage() {
                     {group.links.map((link, li) => (
                       <div
                         key={li}
+                        className="result-row"
                         style={{
                           display: "flex",
                           alignItems: "center",
@@ -139,6 +140,7 @@ export default function TulemUsedPage() {
                         }}
                       >
                         <span
+                          className="result-label"
                           style={{
                             fontSize: "15px",
                             color: "rgba(0,0,0,0.6)",
@@ -151,6 +153,7 @@ export default function TulemUsedPage() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="result-btn"
                           style={{
                             display: "inline-flex",
                             alignItems: "center",

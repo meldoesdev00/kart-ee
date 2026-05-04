@@ -27,6 +27,7 @@ const OVERLAY = "linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0
 
 export default function SplitHero() {
   const [active, setActive] = useState(0);
+  const [hoveredPanel, setHoveredPanel] = useState<number | null>(null);
   const touchStartX = useRef<number>(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
 
@@ -62,15 +63,18 @@ export default function SplitHero() {
       <section className="hero-split-desktop" style={{
         width: "100%", height: "100svh", display: "flex", overflow: "hidden",
       }}>
-        <div style={{
-          width: "50%", background: "#0a0a0a",
-          display: "flex", flexDirection: "column", justifyContent: "flex-end",
-          padding: "clamp(40px,5vw,80px)", paddingTop: "120px",
-          overflow: "hidden", position: "relative",
-        }}>
+        <div
+          onMouseEnter={() => setHoveredPanel(0)}
+          onMouseLeave={() => setHoveredPanel(null)}
+          style={{
+            width: "50%", background: "#0a0a0a",
+            display: "flex", flexDirection: "column", justifyContent: "flex-end",
+            padding: "clamp(40px,5vw,80px)", paddingTop: "120px",
+            overflow: "hidden", position: "relative", cursor: "default",
+          }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/photos/talendidrajale.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.45 }} />
-          <div style={{ position: "absolute", inset: 0, background: OVERLAY }} />
+          <img src="/photos/talendidrajale.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: hoveredPanel === 0 ? 0.72 : 0.45, transition: "opacity 0.45s ease" }} />
+          <div style={{ position: "absolute", inset: 0, background: OVERLAY, opacity: hoveredPanel === 0 ? 0.25 : 1, transition: "opacity 0.45s ease" }} />
           <div style={{ position: "relative", zIndex: 1 }}>
             <h1 style={{ color: "#ffffff", fontSize: "clamp(56px, 8vw, 120px)", fontWeight: 500, lineHeight: 0.93, letterSpacing: "-0.04em", marginBottom: "32px" }}>
               Talendid<br />Rajale
@@ -87,15 +91,18 @@ export default function SplitHero() {
 
         <div style={{ width: "1px", background: "rgba(255,255,255,0.2)", flexShrink: 0 }} />
 
-        <div style={{
-          width: "50%", background: "#0a0a0a",
-          display: "flex", flexDirection: "column", justifyContent: "flex-end",
-          padding: "clamp(40px,5vw,80px)", paddingTop: "120px",
-          overflow: "hidden", position: "relative",
-        }}>
+        <div
+          onMouseEnter={() => setHoveredPanel(1)}
+          onMouseLeave={() => setHoveredPanel(null)}
+          style={{
+            width: "50%", background: "#0a0a0a",
+            display: "flex", flexDirection: "column", justifyContent: "flex-end",
+            padding: "clamp(40px,5vw,80px)", paddingTop: "120px",
+            overflow: "hidden", position: "relative", cursor: "default",
+          }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/photos/kardiakadeemia.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.45 }} />
-          <div style={{ position: "absolute", inset: 0, background: OVERLAY }} />
+          <img src="/photos/kardiakadeemia.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: hoveredPanel === 1 ? 0.72 : 0.45, transition: "opacity 0.45s ease" }} />
+          <div style={{ position: "absolute", inset: 0, background: OVERLAY, opacity: hoveredPanel === 1 ? 0.25 : 1, transition: "opacity 0.45s ease" }} />
           <div style={{ position: "relative", zIndex: 1 }}>
             <h2 style={{ color: "#ffffff", fontSize: "clamp(56px, 8vw, 120px)", fontWeight: 500, lineHeight: 0.93, letterSpacing: "-0.04em", marginBottom: "32px" }}>
               Kardi-<br />akadeemia

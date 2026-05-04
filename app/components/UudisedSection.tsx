@@ -104,6 +104,7 @@ export default function UudisedSection() {
 
           <a
             href="/uudised"
+            className="uudised-vaata-koiki"
             style={{
               display: "inline-flex",
               alignItems: "center",
