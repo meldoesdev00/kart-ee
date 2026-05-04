@@ -46,7 +46,7 @@ export default function MeistPage() {
         <section className="subpage-hero section-inner" style={{ background: "#ffffff", paddingTop: "120px" }}>
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px 80px" }}>
             <h1 style={{
-              fontSize: "clamp(56px, 8vw, 120px)",
+              fontSize: "clamp(2.6rem, 6.5vw, 5.5rem)",
               fontWeight: 500,
               letterSpacing: "-0.04em",
               lineHeight: 0.93,
