@@ -409,7 +409,7 @@ export default function VoistlussarjadPage() {
               Eestis on mitmeid võistluskardi jaoks sobivaid radasid. Rajatasude ning sõitmise
               võimaluste kohta tuleb infot küsida otse kardiraja haldajalt.
             </p>
-            <div style={{ borderRadius: "16px", overflow: "hidden" }}>
+            <div className="mobile-map" style={{ borderRadius: "16px", overflow: "hidden" }}>
               <iframe
                 src="https://www.google.com/maps/d/embed?mid=1MadnQTsXZXPXHbK_f4-CnTWpEDHpweU"
                 style={{

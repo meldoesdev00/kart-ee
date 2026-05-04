@@ -19,12 +19,12 @@ export const metadata: Metadata = {
 const W = "min(1280px, 100vw - 80px)";
 
 const ETAPID = [
-  { n: "01", date: "26. aprill 2026",    location: "Unibet Kardikeskus",  city: "Tallinn" },
-  { n: "02", date: "24. mai 2026",       location: "EST1 Karting",        city: "Aravete" },
-  { n: "03", date: "28. juuni 2026",     location: "Kartdagö",            city: "Käina" },
-  { n: "04", date: "26. juuli 2026",     location: "Kartdagö",            city: "Tabasalu" },
-  { n: "05", date: "23. august 2026",    location: "LaitseRallyPark",     city: "Laitse" },
-  { n: "06", date: "20. september 2026", location: "EST1 Karting",        city: "Rapla" },
+  { n: "01", date: "26. aprill 2026",    location: "Unibet Kardikeskus",   city: "Tallinn",  href: "https://kardikeskus.ee" },
+  { n: "02", date: "24. mai 2026",       location: "EST1 Karting Aravete", city: "Aravete",  href: "https://www.karting.ee" },
+  { n: "03", date: "28. juuni 2026",     location: "Kartdagö Käina",       city: "Käina",    href: "https://www.kartdago.ee" },
+  { n: "04", date: "26. juuli 2026",     location: "Kartdagö Tabasalu",    city: "Tabasalu", href: "https://www.kartdago.ee" },
+  { n: "05", date: "23. august 2026",    location: "LaitseRallyPark",      city: "Laitse",   href: "https://www.laitserallypark.ee" },
+  { n: "06", date: "20. september 2026", location: "EST1 Karting Rapla",   city: "Rapla",    href: "https://www.karting.ee" },
 ];
 
 const PARTICIPANTS = [
@@ -153,6 +153,41 @@ export default function TalendidRajalePage() {
                 </div>
               ))}
             </div>
+
+            {/* Hero CTAs */}
+            <div className="cta-group" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "32px" }}>
+              <a
+                href="mailto:kart@kart.ee"
+                style={{
+                  padding: "13px 26px",
+                  background: "#ffffff",
+                  color: "#0a0a0a",
+                  fontSize: "13px",
+                  fontWeight: 500,
+                  textDecoration: "none",
+                  borderRadius: "100px",
+                  letterSpacing: "0.01em",
+                }}
+              >
+                Registreeri 2026 →
+              </a>
+              <a
+                href="/talendid-rajale-juhend-2026.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: "13px 26px",
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  color: "rgba(255,255,255,0.85)",
+                  fontSize: "13px",
+                  fontWeight: 400,
+                  textDecoration: "none",
+                  borderRadius: "100px",
+                }}
+              >
+                Võistlusjuhend ↓
+              </a>
+            </div>
           </div>
         </section>
 
@@ -241,7 +276,7 @@ export default function TalendidRajalePage() {
                 marginBottom: "28px",
               }}
             >
-              Etapid 2026
+              Ajakava 2026
             </h3>
             <div style={{ borderTop: "1px solid rgba(0,0,0,0.1)" }}>
               {ETAPID.map((e, i) => (
@@ -268,17 +303,22 @@ export default function TalendidRajalePage() {
                     {e.n}
                   </span>
                   <div>
-                    <div
+                    <a
+                      href={e.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="track-link"
                       style={{
                         fontSize: "17px",
                         fontWeight: 500,
                         color: "#0a0a0a",
                         letterSpacing: "-0.01em",
                         marginBottom: "3px",
+                        display: "block",
                       }}
                     >
                       {e.location}
-                    </div>
+                    </a>
                     <div
                       style={{ fontSize: "13px", color: "rgba(0,0,0,0.4)", fontWeight: 400 }}
                     >

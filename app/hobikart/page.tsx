@@ -243,7 +243,7 @@ export default function HobikartPage() {
               kui ka hooajaliselt välitingimustes. Soovitatav on sõit ette broneerida,
               kontakteerudes otse kardikeskusega.
             </p>
-            <div style={{ borderRadius: "16px", overflow: "hidden" }}>
+            <div className="mobile-map" style={{ borderRadius: "16px", overflow: "hidden" }}>
               <iframe
                 src="https://www.google.com/maps/d/embed?mid=1oqNeIf-n1DTQcfBZFHulQdu4jI-ItVQ"
                 style={{
