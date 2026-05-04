@@ -153,13 +153,10 @@ export default function KardiakadeemiaPage() {
                   padding: "48px 0",
                   borderBottom: "1px solid rgba(0,0,0,0.08)",
                   display: "grid",
-                  gridTemplateColumns: "60px 1fr 1fr",
+                  gridTemplateColumns: "1fr 1fr",
                   gap: "40px",
                   alignItems: "start",
                 }}>
-                  <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.2)", fontFamily: "Aspekta", letterSpacing: "0.1em", paddingTop: "4px" }}>
-                    {m.n}
-                  </span>
                   <div>
                     <div style={{ display: "flex", alignItems: "baseline", gap: "16px", marginBottom: "12px" }}>
                       <h3 style={{ fontSize: "20px", fontWeight: 500, color: "#0a0a0a", letterSpacing: "-0.02em" }}>
