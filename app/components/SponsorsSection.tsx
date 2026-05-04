@@ -4,42 +4,46 @@ import { useState } from "react";
 
 const W = "min(1280px, 100vw - 80px)";
 
-const LOGOS = [0, 1, 2, 3, 4];
+const LOGOS = [
+  "https://static.wixstatic.com/media/8ccd18_06d3e63a47ac439b9f341f1d03b13e65~mv2.png",
+  "https://static.wixstatic.com/media/f55c36_415f5c4f4f14494a9e43ee918ee52a8d~mv2.jpg",
+  "https://static.wixstatic.com/media/f55c36_02355ea5dfd946718ca857bad94ef708~mv2.jpg",
+  "https://static.wixstatic.com/media/f55c36_f956a74235cc4aec812653bf6251fe22~mv2.jpg",
+  "https://static.wixstatic.com/media/f55c36_0bc0b15d13824ac28bfbabec2b1f1808~mv2.jpg",
+  "https://static.wixstatic.com/media/8ccd18_38591f935d164df0b28c4db64ceec7af~mv2.png",
+  "https://static.wixstatic.com/media/8ccd18_e957e5d9c1bf411da33a2d8b8992b2c1~mv2.png",
+  "https://static.wixstatic.com/media/f55c36_d763bcc5cb5d42a882a4a619adb0377a~mv2.png",
+];
 
-function LogoBox() {
+function LogoItem({ src }: { src: string }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        border: hovered ? "1px solid rgba(255,255,255,0.3)" : "1px solid rgba(255,255,255,0.1)",
-        borderRadius: "10px",
-        width: "140px",
-        height: "56px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        transition: "border-color 0.18s ease",
-        cursor: "default",
+        padding: "12px 20px",
         flexShrink: 0,
+        transition: "opacity 0.2s ease",
       }}
     >
-      <svg width="48" height="16" viewBox="0 0 48 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0" y="4" width="48" height="8" rx="2" fill="rgba(255,255,255,0.12)" />
-        <text
-          x="24"
-          y="12"
-          textAnchor="middle"
-          fill="rgba(255,255,255,0.2)"
-          fontSize="9"
-          fontFamily="system-ui, sans-serif"
-          fontWeight="500"
-          letterSpacing="0.1em"
-        >
-          LOGO
-        </text>
-      </svg>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt=""
+        style={{
+          height: "40px",
+          width: "auto",
+          maxWidth: "120px",
+          objectFit: "contain",
+          display: "block",
+          filter: hovered ? "none" : "grayscale(100%) brightness(2) opacity(0.4)",
+          transition: "filter 0.25s ease",
+        }}
+      />
     </div>
   );
 }
@@ -47,14 +51,17 @@ function LogoBox() {
 export default function SponsorsSection() {
   return (
     <section style={{ background: "#0a0a0a" }}>
-      <div style={{ maxWidth: W, margin: "0 auto", padding: "56px 40px" }}>
+      <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
+        <div style={{ height: "1px", background: "rgba(255,255,255,0.08)" }} />
+      </div>
+      <div style={{ maxWidth: W, margin: "0 auto", padding: "48px 40px 56px" }}>
         <div style={{
           fontSize: "11px",
-          color: "rgba(255,255,255,0.35)",
+          color: "rgba(255,255,255,0.3)",
           letterSpacing: "0.14em",
           textTransform: "uppercase",
           fontWeight: 400,
-          marginBottom: "28px",
+          marginBottom: "32px",
           textAlign: "center",
         }}>
           Toetajad
@@ -62,13 +69,13 @@ export default function SponsorsSection() {
         <div style={{
           display: "flex",
           flexDirection: "row",
-          gap: "16px",
+          gap: "8px",
           flexWrap: "wrap",
           justifyContent: "center",
           alignItems: "center",
         }}>
-          {LOGOS.map((_, i) => (
-            <LogoBox key={i} />
+          {LOGOS.map((src, i) => (
+            <LogoItem key={i} src={src} />
           ))}
         </div>
       </div>
