@@ -25,9 +25,8 @@ function LogoItem({ src }: { src: string }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "12px 20px",
+        padding: "10px 20px",
         flexShrink: 0,
-        transition: "opacity 0.2s ease",
       }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -35,12 +34,15 @@ function LogoItem({ src }: { src: string }) {
         src={src}
         alt=""
         style={{
-          height: "40px",
+          height: "36px",
           width: "auto",
           maxWidth: "120px",
           objectFit: "contain",
           display: "block",
-          filter: hovered ? "none" : "grayscale(100%) brightness(2) opacity(0.4)",
+          mixBlendMode: "multiply",
+          filter: hovered
+            ? "grayscale(0%) opacity(1)"
+            : "grayscale(100%) opacity(0.35)",
           transition: "filter 0.25s ease",
         }}
       />
@@ -50,18 +52,18 @@ function LogoItem({ src }: { src: string }) {
 
 export default function SponsorsSection() {
   return (
-    <section style={{ background: "#0a0a0a" }}>
+    <section style={{ background: "#ffffff" }}>
       <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
-        <div style={{ height: "1px", background: "rgba(255,255,255,0.08)" }} />
+        <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
       </div>
       <div style={{ maxWidth: W, margin: "0 auto", padding: "48px 40px 56px" }}>
         <div style={{
           fontSize: "11px",
-          color: "rgba(255,255,255,0.3)",
+          color: "rgba(0,0,0,0.3)",
           letterSpacing: "0.14em",
           textTransform: "uppercase",
           fontWeight: 400,
-          marginBottom: "32px",
+          marginBottom: "28px",
           textAlign: "center",
         }}>
           Toetajad
