@@ -6,6 +6,7 @@ const LINKS = [
   { label: "Talendid Rajale", href: "/talendid-rajale" },
   { label: "Kardiakadeemia",  href: "/kardiakadeemia" },
   { label: "Võistlussarjad",  href: "/voistlussarjad" },
+  { label: "Tulemused",       href: "/tulemused" },
   { label: "Meist",           href: "/meist" },
 ];
 

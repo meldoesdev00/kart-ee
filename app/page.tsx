@@ -6,6 +6,7 @@ import AkadeemiaSection from "@/app/components/AkadeemiaSection";
 import VoistlussarjadSection from "@/app/components/VoistlussarjadSection";
 import UudisedSection from "@/app/components/UudisedSection";
 import MeistSection from "@/app/components/MeistSection";
+import SponsorsSection from "@/app/components/SponsorsSection";
 import Footer from "@/app/components/Footer";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <VoistlussarjadSection />
         <UudisedSection />
         <MeistSection />
+        <SponsorsSection />
         <Footer />
       </main>
     </>

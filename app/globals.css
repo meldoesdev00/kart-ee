@@ -49,6 +49,13 @@ body {
   -webkit-box-orient: vertical;
 }
 
+/* ── Participants table ────────────────────────────────────── */
+.participants-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    ≤900px – TABLET / NARROW (collapse multi-col layouts)
    ═══════════════════════════════════════════════════════════════ */
@@ -116,9 +123,9 @@ body {
 
   /* ── Typography hierarchy ─────────────────────────────────── */
   .subpage-hero h1 {
-    font-size: 44px !important;
-    line-height: 1.02 !important;
-    letter-spacing: -0.03em !important;
+    font-size: 52px !important;
+    line-height: 0.97 !important;
+    letter-spacing: -0.04em !important;
     margin-bottom: 20px !important;
     max-width: 100% !important;
   }
@@ -133,42 +140,26 @@ body {
   }
 
   .section-pad h2 {
-    font-size: 32px !important;
-    line-height: 1.05 !important;
-    letter-spacing: -0.03em !important;
-    margin-bottom: 24px !important;
+    font-size: 40px !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.035em !important;
+    margin-bottom: 20px !important;
   }
   .section-pad h3 {
     font-size: 17px !important;
   }
+  /* ── Section header → content gap ────────────────────────── */
+  .section-header-grid {
+    margin-bottom: 28px !important;
+    gap: 16px !important;
+  }
 
   /* ── Hero (landing) ───────────────────────────────────────── */
-  .hero-split {
-    flex-direction: column !important;
-    height: auto !important;
-    min-height: 100svh;
+  .hero-split-desktop {
+    display: none !important;
   }
-  .hero-panel {
-    width: 100% !important;
-    min-height: 70svh;
-    padding: 88px 20px 40px !important;
-    justify-content: flex-end !important;
-  }
-  .hero-panel h1,
-  .hero-panel h2 {
-    font-size: 56px !important;
-    line-height: 1.0 !important;
-    margin-bottom: 18px !important;
-  }
-  .hero-panel p {
-    font-size: 14px !important;
-    line-height: 1.55 !important;
-    max-width: 100% !important;
-    margin-bottom: 24px !important;
-  }
-  .hero-divider {
-    width: 100% !important;
-    height: 1px !important;
+  .hero-mobile {
+    display: block !important;
   }
 
   /* ── CTA buttons: inline, not full-width banners ──────────── */
@@ -287,6 +278,16 @@ body {
   .news-list-row > span:last-child {
     display: none !important;
   }
+
+  /* ── Participants table ───────────────────────────────────── */
+  .participants-table th,
+  .participants-table td {
+    font-size: 12px !important;
+    padding: 10px 8px !important;
+  }
+  .participants-table .hide-mobile {
+    display: none !important;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -300,17 +301,13 @@ body {
     padding-right: 18px !important;
   }
   .subpage-hero h1 {
-    font-size: 38px !important;
-  }
-  .hero-panel h1,
-  .hero-panel h2 {
-    font-size: 46px !important;
+    font-size: 42px !important;
   }
   .uudised-header h2 {
-    font-size: 34px !important;
+    font-size: 32px !important;
   }
   .section-pad h2 {
-    font-size: 28px !important;
+    font-size: 34px !important;
   }
   .stats-grid {
     grid-template-columns: 1fr 1fr !important;
