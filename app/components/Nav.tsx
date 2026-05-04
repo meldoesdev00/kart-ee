@@ -137,12 +137,12 @@ export default function Nav() {
             >
               {[0, 1].map(i => (
                 <span key={i} style={{
-                  display: "block", width: "13px", height: "1.5px",
-                  background: "#0a0a0a", borderRadius: "2px",
+                  display: "block", width: "13px", height: "1px",
+                  background: "#0a0a0a", borderRadius: "1px",
                   transformOrigin: "center",
                   transition: "transform 0.28s cubic-bezier(0.77,0,0.18,1)",
                   transform: open
-                    ? i === 0 ? "translateY(2.75px) rotate(45deg)" : "translateY(-2.75px) rotate(-45deg)"
+                    ? i === 0 ? "translateY(2.5px) rotate(45deg)" : "translateY(-2.5px) rotate(-45deg)"
                     : "none",
                 }} />
               ))}
