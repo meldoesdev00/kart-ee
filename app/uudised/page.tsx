@@ -1,6 +1,19 @@
+import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
 import { NEWS } from "@/app/lib/newsData";
+
+export const metadata: Metadata = {
+  title: "Uudised",
+  description:
+    "Eesti kardispordi viimased uudised – võistlused, registreerimised, tulemused ja programmide info.",
+  openGraph: {
+    title: "Uudised | Eesti Kardiliit",
+    description: "Eesti kardispordi viimased uudised.",
+    url: "https://kart.ee/uudised",
+  },
+  alternates: { canonical: "https://kart.ee/uudised" },
+};
 
 const W = "min(1280px, 100vw - 80px)";
 

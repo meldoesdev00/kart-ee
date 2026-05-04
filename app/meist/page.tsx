@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Meist",
+  description:
+    "Eesti Kardiliit on Eesti kardispordi katusorganisatsioon. Tutvu meie meeskonna, missiooni ja ajaluga.",
+  openGraph: {
+    title: "Meist | Eesti Kardiliit",
+    description:
+      "Eesti kardispordi katusorganisatsioon – meeskond, missioon ja ajalugu.",
+    url: "https://kart.ee/meist",
+  },
+  alternates: { canonical: "https://kart.ee/meist" },
+};
 
 const W = "min(1280px, 100vw - 80px)";
 

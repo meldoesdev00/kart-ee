@@ -1,5 +1,20 @@
+import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Kardiakadeemia",
+  description:
+    "Süstemaatiline kardiakadeemia koolitusprogramm algajatele ja edasijõudnutele. Hobikardist võistluskardini – professionaalsed treenerid, struktureeritud kursused.",
+  openGraph: {
+    title: "Kardiakadeemia | Eesti Kardiliit",
+    description:
+      "Koolitusprogramm algajatele ja edasijõudnutele. Hobikardist võistluskardini.",
+    url: "https://kart.ee/kardiakadeemia",
+    images: [{ url: "/photos/kardiakadeemia.jpg", alt: "Kardiakadeemia" }],
+  },
+  alternates: { canonical: "https://kart.ee/kardiakadeemia" },
+};
 
 const W = "min(1280px, 100vw - 80px)";
 

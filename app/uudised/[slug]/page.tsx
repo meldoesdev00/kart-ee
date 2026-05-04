@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
@@ -7,6 +8,27 @@ const W = "min(1280px, 100vw - 80px)";
 
 export function generateStaticParams() {
   return NEWS.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = NEWS.find((p) => p.slug === slug);
+  if (!post) return {};
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: `${post.title} | Eesti Kardiliit`,
+      description: post.excerpt,
+      url: `https://kart.ee/uudised/${post.slug}`,
+      ...(post.img ? { images: [{ url: post.img, alt: post.title }] } : {}),
+    },
+    alternates: { canonical: `https://kart.ee/uudised/${post.slug}` },
+  };
 }
 
 export default async function NewsArticlePage({

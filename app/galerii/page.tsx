@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Galerii",
+  description:
+    "Eesti kardispordi fotogalerii – pildid etappidest, treeningutest ja võistlustest.",
+  openGraph: {
+    title: "Galerii | Eesti Kardiliit",
+    description: "Fotod etappidest, treeningutest ja võistlustest.",
+    url: "https://kart.ee/galerii",
+  },
+  alternates: { canonical: "https://kart.ee/galerii" },
+};
 
 const W = "min(1280px, 100vw - 80px)";
 

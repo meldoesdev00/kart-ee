@@ -13,6 +13,7 @@ const LOGOS = [
   "https://static.wixstatic.com/media/8ccd18_38591f935d164df0b28c4db64ceec7af~mv2.png",
   "https://static.wixstatic.com/media/8ccd18_e957e5d9c1bf411da33a2d8b8992b2c1~mv2.png",
   "https://static.wixstatic.com/media/f55c36_d763bcc5cb5d42a882a4a619adb0377a~mv2.png",
+  "https://static.wixstatic.com/media/f55c36_327a90b9c80d496f8d0e98fb6967823e~mv2.png/v1/fill/w_214,h_51,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/cornimet%20logo.png"
 ];
 
 function LogoItem({ src }: { src: string }) {
@@ -57,17 +58,6 @@ export default function SponsorsSection() {
         <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
       </div>
       <div style={{ maxWidth: W, margin: "0 auto", padding: "48px 40px 56px" }}>
-        <div style={{
-          fontSize: "11px",
-          color: "rgba(0,0,0,0.3)",
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-          fontWeight: 400,
-          marginBottom: "28px",
-          textAlign: "center",
-        }}>
-          Toetajad
-        </div>
         <div style={{
           display: "flex",
           flexDirection: "row",

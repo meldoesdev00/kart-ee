@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Hobikart",
+  description:
+    "Hobikardiga alustamine Eestis – rajad, kardid, hinnad ja nõuanded. Kõik mida vajad, et esimest korda rooli istuda.",
+  openGraph: {
+    title: "Hobikart | Eesti Kardiliit",
+    description:
+      "Hobikardiga alustamine – rajad, kardid ja nõuanded algajale.",
+    url: "https://kart.ee/hobikart",
+  },
+  alternates: { canonical: "https://kart.ee/hobikart" },
+};
 
 const W = "min(1280px, 100vw - 80px)";
 

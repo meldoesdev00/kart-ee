@@ -1,5 +1,20 @@
+import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Talendid Rajale",
+  description:
+    "Eesti Kardiliidu noorteprogramm U11 ja U14 vanuseklassidele. 6 etappi üle Eesti, professionaalne treenimine ja karjäärivõimalused rahvusvahelisel areenil.",
+  openGraph: {
+    title: "Talendid Rajale | Eesti Kardiliit",
+    description:
+      "Noorteprogramm U11 ja U14 vanuseklassidele. 6 etappi üle Eesti kardiradadel.",
+    url: "https://kart.ee/talendid-rajale",
+    images: [{ url: "/photos/talendidrajale.jpg", alt: "Talendid Rajale" }],
+  },
+  alternates: { canonical: "https://kart.ee/talendid-rajale" },
+};
 
 const W = "min(1280px, 100vw - 80px)";
 

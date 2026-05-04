@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Tulemused",
+  description:
+    "Eesti kardivõistluste tulemused 2024–2026. Talendid Rajale, Kardiakadeemia ja Võistlussarjade tulemused PDF-formaadis.",
+  openGraph: {
+    title: "Tulemused | Eesti Kardiliit",
+    description:
+      "Eesti kardivõistluste tulemused 2024–2026 PDF-formaadis.",
+    url: "https://kart.ee/tulemused",
+  },
+  alternates: { canonical: "https://kart.ee/tulemused" },
+};
 
 const W = "min(1280px, 100vw - 80px)";
 

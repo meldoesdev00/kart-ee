@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Võistlussarjad",
+  description:
+    "Eesti kardivõistlussarjad Kadetist KZ2-ni. Rahvuslikud ja rahvusvahelised sarjad, hooajakava ja registreerimine.",
+  openGraph: {
+    title: "Võistlussarjad | Eesti Kardiliit",
+    description:
+      "Eesti kardivõistlussarjad Kadetist KZ2-ni. Rahvuslikud ja rahvusvahelised sarjad.",
+    url: "https://kart.ee/voistlussarjad",
+  },
+  alternates: { canonical: "https://kart.ee/voistlussarjad" },
+};
 
 const W = "min(1280px, 100vw - 80px)";
 
