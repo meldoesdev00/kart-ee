@@ -132,19 +132,20 @@ h1, h2, h3 {
     display: none !important;
   }
 
-  /* ── Containers: 20px gutters ────────────────────────────── */
+  /* ── Containers: 20px gutters, max-width unlocked ───────── */
   .section-inner {
     padding-left: 20px !important;
     padding-right: 20px !important;
+    max-width: 100% !important;
   }
   .section-pad {
     padding-top: 64px !important;
     padding-bottom: 64px !important;
   }
-  /* Nav pill = ~67px tall; 108px gives 41px clearance below it */
+  /* 160px clears the nav pill + safe area on modern iPhones */
   .subpage-hero {
-    padding-top: 108px !important;
-    padding-bottom: 32px !important;
+    padding-top: 160px !important;
+    padding-bottom: 0 !important;
   }
   .subpage-hero > div {
     padding-left: 0 !important;
@@ -197,6 +198,11 @@ h1, h2, h3 {
     height: clamp(72px, 19vw, 88px) !important;
     width: auto !important;
     max-width: 100% !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* ── Subpage hero CTA: shrink the big bottom gap before photo ── */
+  .subpage-hero .cta-group {
     margin-bottom: 32px !important;
   }
 
