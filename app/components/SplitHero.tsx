@@ -89,6 +89,7 @@ export default function SplitHero() {
                 display: "block",
                 marginBottom: "28px",
                 maxWidth: "100%",
+                filter: "brightness(0) invert(1)",
               }}
             />
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "36px", fontWeight: 400 }}>
@@ -127,6 +128,7 @@ export default function SplitHero() {
                 display: "block",
                 marginBottom: "28px",
                 maxWidth: "100%",
+                filter: "brightness(0) invert(1)",
               }}
             />
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "36px", fontWeight: 400 }}>
@@ -174,6 +176,7 @@ export default function SplitHero() {
                     display: "block",
                     marginBottom: "16px",
                     maxWidth: "85%",
+                    filter: "brightness(0) invert(1)",
                   }}
                 />
                 <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", lineHeight: 1.55, marginBottom: "28px", fontWeight: 400 }}>
