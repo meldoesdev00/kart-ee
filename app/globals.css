@@ -147,9 +147,10 @@ h1, h2, h3 {
     padding-bottom: 32px !important;
   }
   .subpage-hero > div {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     padding-bottom: 0 !important;
+    max-width: 100% !important;
   }
 
   /* ── Typography: clear hierarchy, readable sizes ─────────── */
@@ -193,9 +194,9 @@ h1, h2, h3 {
     width: auto !important;
   }
   .subpage-hero-logo {
-    height: clamp(44px, 11vw, 60px) !important;
+    height: clamp(60px, 15vw, 76px) !important;
     width: auto !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 28px !important;
   }
 
   /* ── Edge-to-edge maps/iframes on mobile ─────────────────── */

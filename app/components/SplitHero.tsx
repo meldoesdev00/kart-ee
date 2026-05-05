@@ -169,11 +169,11 @@ export default function SplitHero() {
                   src={panel.logoSrc}
                   alt={panel.logoAlt}
                   style={{
-                    height: "clamp(40px, 12vw, 64px)",
+                    height: "clamp(60px, 17vw, 88px)",
                     width: "auto",
                     display: "block",
-                    marginBottom: "16px",
-                    maxWidth: "85%",
+                    marginBottom: "20px",
+                    maxWidth: "90%",
                     alignSelf: "flex-start",
                   }}
                 />
