@@ -64,7 +64,7 @@ export default function KardiakadeemiaPage() {
               alt="Kardiakadeemia"
               className="subpage-hero-logo"
               style={{
-                height: "clamp(52px, 8vw, 100px)",
+                height: "clamp(64px, 9vw, 120px)",
                 width: "auto",
                 display: "block",
                 maxWidth: "100%",

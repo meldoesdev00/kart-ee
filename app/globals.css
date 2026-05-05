@@ -194,9 +194,10 @@ h1, h2, h3 {
     width: auto !important;
   }
   .subpage-hero-logo {
-    height: clamp(60px, 15vw, 76px) !important;
+    height: clamp(72px, 19vw, 88px) !important;
     width: auto !important;
-    margin-bottom: 28px !important;
+    max-width: 100% !important;
+    margin-bottom: 32px !important;
   }
 
   /* ── Edge-to-edge maps/iframes on mobile ─────────────────── */
@@ -388,8 +389,7 @@ h1, h2, h3 {
    ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 480px) {
-  .section-inner,
-  .subpage-hero > div {
+  .section-inner {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
