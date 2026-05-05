@@ -78,18 +78,19 @@ export default function TalendidRajalePage() {
           style={{ background: "#0a0a0a", paddingTop: "120px", paddingBottom: "80px" }}
         >
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
-            <h1
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/talendidrajale_logo_hero.svg"
+              alt="Talendid Rajale"
+              className="subpage-hero-logo"
               style={{
-                fontSize: "clamp(2.6rem, 6.5vw, 5.5rem)",
-                fontWeight: 500,
-                letterSpacing: "-0.04em",
-                lineHeight: 0.93,
-                color: "#ffffff",
+                height: "clamp(52px, 8vw, 100px)",
+                width: "auto",
+                display: "block",
+                maxWidth: "100%",
                 marginBottom: "40px",
               }}
-            >
-              Talendid Rajale
-            </h1>
+            />
             <p
               style={{
                 fontSize: "18px",

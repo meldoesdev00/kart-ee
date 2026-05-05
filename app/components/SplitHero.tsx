@@ -5,7 +5,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 const PANELS = [
   {
     img: "/photos/talendidrajale.jpg",
-    logoSrc: "/talendidrajale_logo.svg",
+    logoSrc: "/talendidrajale_logo_hero.svg",
     logoAlt: "Talendid Rajale",
     desc: "Kardisari noortele U11 ja U14 vanuseklassides. 6 etappi üle Eesti.",
     ctas: [
@@ -15,7 +15,7 @@ const PANELS = [
   },
   {
     img: "/photos/kardiakadeemia.jpg",
-    logoSrc: "/talendidrajale_akadeemia_logo.svg",
+    logoSrc: "/talendidrajale_akadeemia_logo_hero.svg",
     logoAlt: "Kardiakadeemia",
     desc: "Süstemaatiline koolitusprogramm algajatele ja edasijõudnutele.",
     ctas: [
@@ -81,7 +81,7 @@ export default function SplitHero() {
           <div style={{ position: "relative", zIndex: 1 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/talendidrajale_logo.svg"
+              src="/talendidrajale_logo_hero.svg"
               alt="Talendid Rajale"
               style={{
                 height: "clamp(52px, 8vw, 96px)",
@@ -89,7 +89,6 @@ export default function SplitHero() {
                 display: "block",
                 marginBottom: "28px",
                 maxWidth: "100%",
-                filter: "brightness(0) invert(1)",
               }}
             />
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "36px", fontWeight: 400 }}>
@@ -120,7 +119,7 @@ export default function SplitHero() {
           <div style={{ position: "relative", zIndex: 1 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/talendidrajale_akadeemia_logo.svg"
+              src="/talendidrajale_akadeemia_logo_hero.svg"
               alt="Kardiakadeemia"
               style={{
                 height: "clamp(52px, 8vw, 96px)",
@@ -128,7 +127,6 @@ export default function SplitHero() {
                 display: "block",
                 marginBottom: "28px",
                 maxWidth: "100%",
-                filter: "brightness(0) invert(1)",
               }}
             />
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "36px", fontWeight: 400 }}>
@@ -176,7 +174,7 @@ export default function SplitHero() {
                     display: "block",
                     marginBottom: "16px",
                     maxWidth: "85%",
-                    filter: "brightness(0) invert(1)",
+                    alignSelf: "flex-start",
                   }}
                 />
                 <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", lineHeight: 1.55, marginBottom: "28px", fontWeight: 400 }}>

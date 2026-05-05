@@ -58,17 +58,19 @@ export default function KardiakadeemiaPage() {
         <section className="subpage-hero section-inner" style={{ background: "#0a0a0a", paddingTop: "120px", paddingBottom: "0" }}>
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
 
-            <h1 style={{
-              fontSize: "clamp(2.6rem, 6.5vw, 5.5rem)",
-              fontWeight: 500,
-              letterSpacing: "-0.04em",
-              lineHeight: 0.93,
-              color: "#ffffff",
-              marginBottom: "40px",
-              maxWidth: "700px",
-            }}>
-              Kardiakadeemia
-            </h1>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/talendidrajale_akadeemia_logo_hero.svg"
+              alt="Kardiakadeemia"
+              className="subpage-hero-logo"
+              style={{
+                height: "clamp(52px, 8vw, 100px)",
+                width: "auto",
+                display: "block",
+                maxWidth: "100%",
+                marginBottom: "40px",
+              }}
+            />
             <p style={{
               fontSize: "18px",
               lineHeight: 1.7,
@@ -162,7 +164,7 @@ export default function KardiakadeemiaPage() {
                       <h3 style={{ fontSize: "20px", fontWeight: 500, color: "#0a0a0a", letterSpacing: "-0.02em" }}>
                         {m.title}
                       </h3>
-                      <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.3)", fontFamily: "Aspekta", letterSpacing: "0.1em" }}>{m.duration}</span>
+                      <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.3)", fontFamily: "Aspekta" }}>{m.duration}</span>
                     </div>
                     <p style={{ fontSize: "14px", color: "rgba(0,0,0,0.45)", lineHeight: 1.7, fontWeight: 400 }}>
                       {m.desc}

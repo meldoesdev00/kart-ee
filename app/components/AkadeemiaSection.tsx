@@ -18,14 +18,15 @@ export default function AkadeemiaSection() {
 
         <div className="section-header-grid" style={{
           display: "grid", gridTemplateColumns: "1fr 1fr",
-          gap: "48px", alignItems: "end", marginBottom: "64px",
+          gap: "48px", alignItems: "center", marginBottom: "64px",
         }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/talendidrajale_akadeemia_logo.svg"
+            src="/talendidrajale_akadeemia_logo_hero.svg"
             alt="Kardiakadeemia"
+            className="section-logo"
             style={{
-              height: "clamp(36px, 5.5vw, 80px)",
+              height: "clamp(52px, 7vw, 108px)",
               width: "auto",
               display: "block",
               maxWidth: "100%",
