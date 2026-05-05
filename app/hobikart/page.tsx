@@ -42,7 +42,7 @@ export default function HobikartPage() {
           </div>
         </section>
 
-        {/* Sektsioon 1 – Mis on hobikart? */}
+        {/* Mis on hobikart + info cards (same bg, single section) */}
         <section style={{ background: "#ffffff" }}>
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
             <div style={{ height: "1px", background: "rgba(0,0,0,0.1)" }} />
@@ -58,6 +58,7 @@ export default function HobikartPage() {
                 gridTemplateColumns: "1fr 1fr",
                 gap: "64px",
                 alignItems: "start",
+                marginBottom: "56px",
               }}
             >
               <h2
@@ -83,24 +84,13 @@ export default function HobikartPage() {
                 võimalus esimest korda kardispordiga tutvumiseks on just hobikart.
               </p>
             </div>
-          </div>
-        </section>
 
-        {/* Sektsioon 2 – Info cardid */}
-        <section style={{ background: "#ffffff" }}>
-          <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ height: "1px", background: "rgba(0,0,0,0.07)" }} />
-          </div>
-          <div
-            className="section-pad section-inner"
-            style={{ maxWidth: W, margin: "0 auto", padding: "80px 40px 112px" }}
-          >
             <div
               className="section-header-grid"
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
-                gap: "32px",
+                gap: "24px",
                 alignItems: "start",
               }}
             >
@@ -209,7 +199,7 @@ export default function HobikartPage() {
           </div>
         </section>
 
-        {/* Sektsioon 3 – Hobikardirajad Eestis */}
+        {/* Hobikardirajad Eestis */}
         <section style={{ background: "#0a0a0a" }}>
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
             <div style={{ height: "1px", background: "rgba(255,255,255,0.08)" }} />
@@ -260,52 +250,6 @@ export default function HobikartPage() {
           </div>
         </section>
 
-        {/* Sektsioon 4 – CTA */}
-        <section style={{ background: "#f7f7f7" }}>
-          <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
-          </div>
-          <div
-            className="section-pad section-inner"
-            style={{ maxWidth: W, margin: "0 auto", padding: "80px 40px 112px" }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                gap: "32px",
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: "clamp(28px, 3vw, 44px)",
-                  fontWeight: 500,
-                  letterSpacing: "-0.03em",
-                  color: "#0a0a0a",
-                }}
-              >
-                Valmis proovima?
-              </h2>
-              <a
-                href="/talendid-rajale"
-                style={{
-                  display: "inline-block",
-                  padding: "15px 32px",
-                  background: "#0a0a0a",
-                  color: "#ffffff",
-                  fontSize: "14px",
-                  fontWeight: 500,
-                  textDecoration: "none",
-                  borderRadius: "100px",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                Registreeri Talendid Rajale
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

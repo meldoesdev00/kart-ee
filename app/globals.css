@@ -45,8 +45,13 @@ body {
 .featured-article-excerpt {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+
+h1, h2, h3 {
+  hyphens: none;
+  overflow-wrap: break-word;
 }
 
 /* ── Etapp track link ─────────────────────────────────────── */
@@ -91,8 +96,7 @@ body {
   .akadeemia-module-row,
   .board-grid,
   .module-row,
-  .klass-row,
-  .voistlussarjad-row {
+  .klass-row {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
   }
@@ -286,11 +290,6 @@ body {
   .sari-card {
     padding: 24px !important;
   }
-  .sari-card-foot {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 12px !important;
-  }
 
   /* ── Timeline ─────────────────────────────────────────────── */
   .timeline-row {
@@ -329,12 +328,22 @@ body {
 
   /* ── Voistlussarjad landing rows ──────────────────────────── */
   .voistlussarjad-row {
+    grid-template-columns: 1fr auto !important;
     padding: 20px !important;
     margin: 0 -20px !important;
-    gap: 12px !important;
+    gap: 16px !important;
   }
   .voistlussarjad-row .v-arrow {
-    text-align: left !important;
+    text-align: right !important;
+  }
+  .voistlussarjad-row .v-arrow span:last-child {
+    opacity: 0.3 !important;
+  }
+
+  /* ── Sari-card: stack vertically on mobile ─────────────────── */
+  .sari-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
 
   /* ── News listing rows ────────────────────────────────────── */
@@ -380,6 +389,9 @@ body {
     grid-template-columns: 1fr 1fr !important;
   }
   .team-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .uudised-posts {
     grid-template-columns: 1fr !important;
   }
   .mobile-map {

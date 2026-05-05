@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const W = "min(1280px, 100vw - 80px)";
 
 const KLASSID = [
-  { name: "Kadet",  age: "kõige nooremad", engine: "50cc",        desc: "Esimene kokkupuude võistluskardiga" },
+  { name: "Kadet",  age: "Kõige nooremad", engine: "50cc",        desc: "Esimene kokkupuude võistluskardiga" },
   { name: "Micro",  age: "8–10 a",         engine: "60–125cc",    desc: "Nooremate võistlusklass" },
   { name: "Mini",   age: "10–12 a",        engine: "60–125cc",    desc: "Esimesed võistlused, rõhk arengul" },
   { name: "Junior", age: "12–14 a",        engine: "125cc",       desc: "Kiireim arengufaas enne täiskasvanute klasse" },
@@ -229,7 +229,7 @@ export default function VoistlussarjadPage() {
                   <div>
                     <div
                       style={{
-                        fontSize: "13px",
+                        fontSize: "15px",
                         color: "rgba(255,255,255,0.55)",
                         marginBottom: "2px",
                       }}
@@ -238,9 +238,8 @@ export default function VoistlussarjadPage() {
                     </div>
                     <div
                       style={{
-                        fontSize: "11px",
-                        color: "rgba(255,255,255,0.25)",
-                        fontFamily: "monospace",
+                        fontSize: "13px",
+                        color: "rgba(255,255,255,0.45)",
                       }}
                     >
                       {k.engine}
@@ -248,7 +247,7 @@ export default function VoistlussarjadPage() {
                   </div>
                   <div
                     style={{
-                      fontSize: "13px",
+                      fontSize: "15px",
                       color: "rgba(255,255,255,0.4)",
                       lineHeight: 1.5,
                       fontWeight: 400,
@@ -262,8 +261,8 @@ export default function VoistlussarjadPage() {
 
             <p
               style={{
-                fontSize: "12px",
-                color: "rgba(255,255,255,0.2)",
+                fontSize: "13px",
+                color: "rgba(255,255,255,0.38)",
                 marginTop: "24px",
                 lineHeight: 1.6,
               }}
@@ -361,7 +360,7 @@ export default function VoistlussarjadPage() {
 
             <p
               style={{
-                fontSize: "14px",
+                fontSize: "13px",
                 color: "rgba(0,0,0,0.4)",
                 lineHeight: 1.75,
                 fontWeight: 400,

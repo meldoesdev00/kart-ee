@@ -33,35 +33,46 @@ export default function VoistlussarjadSection() {
 
         <div style={{ borderTop: "1px solid rgba(0,0,0,0.1)" }}>
           {SARJAD.map((s, i) => (
-            <div key={i} className="voistlussarjad-row" onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
+            <div
+              key={i}
+              className="voistlussarjad-row"
+              onMouseEnter={() => setActive(i)}
+              onMouseLeave={() => setActive(null)}
               style={{
-                display: "grid", gridTemplateColumns: "2fr 3fr auto",
-                gap: "32px", alignItems: "center",
+                display: "grid",
+                gridTemplateColumns: "1fr auto",
+                gap: "32px",
+                alignItems: "center",
                 borderBottom: "1px solid rgba(0,0,0,0.08)",
                 background: active === i ? "rgba(0,0,0,0.015)" : "transparent",
-                margin: "0 -40px", padding: "28px 40px",
+                margin: "0 -40px",
+                padding: "28px 40px",
                 transition: "background 0.15s",
-              }}>
+              }}
+            >
+              {/* Left: title + desc + tags */}
               <div>
-                <h3 style={{ fontSize: "17px", fontWeight: 500, color: "#0a0a0a", letterSpacing: "-0.01em", marginBottom: "8px" }}>
+                <h3 style={{ fontSize: "18px", fontWeight: 500, color: "#0a0a0a", letterSpacing: "-0.01em", marginBottom: "6px" }}>
                   {s.title}
                 </h3>
+                <p style={{ fontSize: "14px", color: "rgba(0,0,0,0.5)", lineHeight: 1.55, fontWeight: 400, marginBottom: "10px" }}>
+                  {s.desc}
+                </p>
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                   {s.classes.map(c => (
                     <span key={c} style={{
-                      fontSize: "10px", padding: "2px 8px",
+                      fontSize: "11px", padding: "3px 9px",
                       border: "1px solid rgba(0,0,0,0.12)", borderRadius: "100px",
-                      color: "rgba(0,0,0,0.5)", letterSpacing: "0.04em",
+                      color: "rgba(0,0,0,0.5)", letterSpacing: "0.03em",
                     }}>{c}</span>
                   ))}
                 </div>
               </div>
-              <p style={{ fontSize: "14px", color: "rgba(0,0,0,0.45)", lineHeight: 1.6, fontWeight: 400 }}>
-                {s.desc}
-              </p>
-              <div className="v-arrow" style={{ textAlign: "right" }}>
-                <span style={{ fontSize: "13px", color: "rgba(0,0,0,0.32)", display: "block", fontFamily: "Aspekta" }}>{s.date}</span>
-                <span style={{ fontSize: "14px", color: "rgba(0,0,0,0.25)", opacity: active === i ? 1 : 0, transition: "opacity 0.15s" }}>→</span>
+
+              {/* Right: date + arrow */}
+              <div className="v-arrow" style={{ textAlign: "right", flexShrink: 0 }}>
+                <span style={{ fontSize: "13px", color: "rgba(0,0,0,0.35)", display: "block", marginBottom: "4px" }}>{s.date}</span>
+                <span style={{ fontSize: "14px", color: "rgba(0,0,0,0.25)", display: "block", opacity: active === i ? 1 : 0, transition: "opacity 0.15s" }}>→</span>
               </div>
             </div>
           ))}

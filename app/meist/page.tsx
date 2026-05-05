@@ -72,14 +72,6 @@ export default function MeistPage() {
                   Organiseerime võistlussarju, noorteprogramme ja koolitusi – Bambinost kuni rahvusvahelise
                   OK-klassini. Talendid Rajale sari on avatud kõigile noortele ilma eelneva kogemuseta.
                 </p>
-                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                  <a href="mailto:kart@kart.ee" style={{
-                    padding: "13px 26px", background: "#0a0a0a", color: "#ffffff",
-                    fontSize: "13px", fontWeight: 500, textDecoration: "none", borderRadius: "100px",
-                  }}>
-                    Võta ühendust
-                  </a>
-                </div>
               </div>
             </div>
 
@@ -205,11 +197,11 @@ export default function MeistPage() {
                       alignItems: "baseline",
                       gap: "16px",
                     }}>
-                      <span style={{ fontSize: "13px", color: "rgba(0,0,0,0.35)", fontWeight: 400, flexShrink: 0 }}>
-                        {r.label}
-                      </span>
-                      <span style={{ fontSize: "15px", fontWeight: 400, color: "#0a0a0a", textAlign: "right" }}>
+                      <span style={{ fontSize: "15px", fontWeight: 400, color: "#0a0a0a" }}>
                         {r.value}
+                      </span>
+                      <span style={{ fontSize: "12px", color: "rgba(0,0,0,0.35)", fontWeight: 400, flexShrink: 0, textAlign: "right" }}>
+                        {r.label}
                       </span>
                     </div>
                   ))}
