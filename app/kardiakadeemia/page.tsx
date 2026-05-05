@@ -55,7 +55,7 @@ export default function KardiakadeemiaPage() {
       <Nav />
       <main>
         {/* Hero */}
-        <section className="subpage-hero section-inner" style={{ background: "#0a0a0a", paddingTop: "120px", paddingBottom: "0" }}>
+        <section className="subpage-hero subpage-hero-photo section-inner" style={{ background: "#0a0a0a", paddingTop: "120px", paddingBottom: "0" }}>
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
 
             {/* eslint-disable-next-line @next/next/no-img-element */}
