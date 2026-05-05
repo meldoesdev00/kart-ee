@@ -145,7 +145,7 @@ h1, h2, h3 {
   /* 128px clears the nav pill + safe area on modern iPhones */
   .subpage-hero {
     padding-top: 128px !important;
-    padding-bottom: 72px !important;
+    padding-bottom: 52px !important;
   }
   /* Hero sections ending with a photo — no bottom padding so image runs to edge */
   .subpage-hero-photo {
