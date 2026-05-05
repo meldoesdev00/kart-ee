@@ -30,6 +30,21 @@ body {
   to   { transform: translateX(-50%); }
 }
 
+@keyframes cookieSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* On mobile the cookie banner spans full width (no right-align offset) */
+@media (max-width: 600px) {
+  [data-cookie-banner] {
+    justify-content: stretch !important;
+  }
+  [data-cookie-banner] > div {
+    max-width: 100% !important;
+  }
+}
+
 /* ── News card text clamping ─────────────────────────────────── */
 .postcard-title {
   overflow: hidden;
