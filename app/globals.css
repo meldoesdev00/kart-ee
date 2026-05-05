@@ -142,9 +142,9 @@ h1, h2, h3 {
     padding-top: 64px !important;
     padding-bottom: 64px !important;
   }
-  /* 160px clears the nav pill + safe area on modern iPhones */
+  /* 128px clears the nav pill + safe area on modern iPhones */
   .subpage-hero {
-    padding-top: 160px !important;
+    padding-top: 128px !important;
     padding-bottom: 0 !important;
   }
   .subpage-hero > div {
