@@ -13,13 +13,17 @@ export default function TalendidSection() {
           display: "grid", gridTemplateColumns: "1fr 1fr",
           gap: "48px", alignItems: "end", marginBottom: "64px",
         }}>
-          <h2 style={{
-            fontSize: "clamp(40px, 5.5vw, 88px)", fontWeight: 500,
-            lineHeight: 0.95, letterSpacing: "-0.04em", color: "#0a0a0a",
-          }}>
-            Talendid <br />
-            Rajale
-          </h2>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/talendidrajale_logo.svg"
+            alt="Talendid Rajale"
+            style={{
+              height: "clamp(36px, 5.5vw, 80px)",
+              width: "auto",
+              display: "block",
+              maxWidth: "100%",
+            }}
+          />
           <div>
             <p style={{ fontSize: "16px", lineHeight: 1.7, color: "rgba(0,0,0,0.52)", fontWeight: 400, marginBottom: "28px" }}>
               Kardisari noortele U11 ja U14 vanuseklassides. 6 etappi üle Eesti aprillist septembrini.

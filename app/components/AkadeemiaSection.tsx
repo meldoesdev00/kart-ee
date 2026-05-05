@@ -20,12 +20,17 @@ export default function AkadeemiaSection() {
           display: "grid", gridTemplateColumns: "1fr 1fr",
           gap: "48px", alignItems: "end", marginBottom: "64px",
         }}>
-          <h2 style={{
-            fontSize: "clamp(40px, 5.5vw, 88px)", fontWeight: 500,
-            lineHeight: 0.95, letterSpacing: "-0.04em", color: "#ffffff",
-          }}>
-            Kardi-<br />akadeemia
-          </h2>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/talendidrajale_akadeemia_logo.svg"
+            alt="Kardiakadeemia"
+            style={{
+              height: "clamp(36px, 5.5vw, 80px)",
+              width: "auto",
+              display: "block",
+              maxWidth: "100%",
+            }}
+          />
           <div>
             <p style={{ fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.45)", fontWeight: 400, marginBottom: "28px" }}>
               Süstemaatiline koolitusprogramm algajatele ja edasijõudnutele. <br />

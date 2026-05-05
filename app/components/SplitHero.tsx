@@ -5,7 +5,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 const PANELS = [
   {
     img: "/photos/talendidrajale.jpg",
-    titleLines: ["Talendid", "Rajale"],
+    logoSrc: "/talendidrajale_logo.svg",
+    logoAlt: "Talendid Rajale",
     desc: "Kardisari noortele U11 ja U14 vanuseklassides. 6 etappi üle Eesti.",
     ctas: [
       { label: "Registreeri →", href: "/talendid-rajale", primary: true },
@@ -14,7 +15,8 @@ const PANELS = [
   },
   {
     img: "/photos/kardiakadeemia.jpg",
-    titleLines: ["Kardi-", "akadeemia"],
+    logoSrc: "/talendidrajale_akadeemia_logo.svg",
+    logoAlt: "Kardiakadeemia",
     desc: "Süstemaatiline koolitusprogramm algajatele ja edasijõudnutele.",
     ctas: [
       { label: "Registreeri →", href: "/kardiakadeemia", primary: true },
@@ -23,7 +25,7 @@ const PANELS = [
   },
 ];
 
-const OVERLAY = "linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 45%, rgba(10,10,10,0.4) 100%)";
+const OVERLAY = "linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.55) 45%, rgba(10,10,10,0.25) 100%)";
 
 export default function SplitHero() {
   const [active, setActive] = useState(0);
@@ -63,6 +65,7 @@ export default function SplitHero() {
       <section className="hero-split-desktop" style={{
         width: "100%", height: "100svh", display: "flex", overflow: "hidden",
       }}>
+        {/* Panel 1 – Talendid Rajale */}
         <div
           onMouseEnter={() => setHoveredPanel(0)}
           onMouseLeave={() => setHoveredPanel(null)}
@@ -73,12 +76,21 @@ export default function SplitHero() {
             overflow: "hidden", position: "relative", cursor: "default",
           }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/photos/talendidrajale.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: hoveredPanel === 0 ? 0.72 : 0.45, transition: "opacity 0.45s ease" }} />
-          <div style={{ position: "absolute", inset: 0, background: OVERLAY, opacity: hoveredPanel === 0 ? 0.25 : 1, transition: "opacity 0.45s ease" }} />
+          <img src="/photos/talendidrajale.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: hoveredPanel === 0 ? 0.75 : 0.5, transition: "opacity 0.45s ease" }} />
+          <div style={{ position: "absolute", inset: 0, background: OVERLAY, opacity: hoveredPanel === 0 ? 0.2 : 1, transition: "opacity 0.45s ease" }} />
           <div style={{ position: "relative", zIndex: 1 }}>
-            <h1 style={{ color: "#ffffff", fontSize: "clamp(56px, 8vw, 120px)", fontWeight: 500, lineHeight: 0.93, letterSpacing: "-0.04em", marginBottom: "32px" }}>
-              Talendid<br />Rajale
-            </h1>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/talendidrajale_logo.svg"
+              alt="Talendid Rajale"
+              style={{
+                height: "clamp(52px, 8vw, 96px)",
+                width: "auto",
+                display: "block",
+                marginBottom: "28px",
+                maxWidth: "100%",
+              }}
+            />
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "36px", fontWeight: 400 }}>
               Kardisari noortele U11 ja U14 vanuseklassides. 6 etappi üle Eesti.
             </p>
@@ -89,8 +101,9 @@ export default function SplitHero() {
           </div>
         </div>
 
-        <div style={{ width: "1px", background: "rgba(255,255,255,0.2)", flexShrink: 0 }} />
+        <div style={{ width: "1px", background: "rgba(255,255,255,0.15)", flexShrink: 0 }} />
 
+        {/* Panel 2 – Kardiakadeemia */}
         <div
           onMouseEnter={() => setHoveredPanel(1)}
           onMouseLeave={() => setHoveredPanel(null)}
@@ -101,12 +114,21 @@ export default function SplitHero() {
             overflow: "hidden", position: "relative", cursor: "default",
           }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/photos/kardiakadeemia.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: hoveredPanel === 1 ? 0.72 : 0.45, transition: "opacity 0.45s ease" }} />
-          <div style={{ position: "absolute", inset: 0, background: OVERLAY, opacity: hoveredPanel === 1 ? 0.25 : 1, transition: "opacity 0.45s ease" }} />
+          <img src="/photos/kardiakadeemia.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: hoveredPanel === 1 ? 0.75 : 0.5, transition: "opacity 0.45s ease" }} />
+          <div style={{ position: "absolute", inset: 0, background: OVERLAY, opacity: hoveredPanel === 1 ? 0.2 : 1, transition: "opacity 0.45s ease" }} />
           <div style={{ position: "relative", zIndex: 1 }}>
-            <h2 style={{ color: "#ffffff", fontSize: "clamp(56px, 8vw, 120px)", fontWeight: 500, lineHeight: 0.93, letterSpacing: "-0.04em", marginBottom: "32px" }}>
-              Kardi-<br />akadeemia
-            </h2>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/talendidrajale_akadeemia_logo.svg"
+              alt="Kardiakadeemia"
+              style={{
+                height: "clamp(52px, 8vw, 96px)",
+                width: "auto",
+                display: "block",
+                marginBottom: "28px",
+                maxWidth: "100%",
+              }}
+            />
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "36px", fontWeight: 400 }}>
               Süstemaatiline koolitusprogramm algajatele ja edasijõudnutele.
             </p>
@@ -125,7 +147,6 @@ export default function SplitHero() {
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        {/* Sliding track */}
         <div style={{
           display: "flex",
           width: `${PANELS.length * 100}%`,
@@ -136,16 +157,25 @@ export default function SplitHero() {
           {PANELS.map((panel, i) => (
             <div key={i} style={{ width: `${100 / PANELS.length}%`, height: "100%", position: "relative", background: "#0a0a0a", overflow: "hidden" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={panel.img} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.45 }} />
+              <img src={panel.img} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.5 }} />
               <div style={{ position: "absolute", inset: 0, background: OVERLAY }} />
               <div style={{
                 position: "absolute", inset: 0,
-                padding: "96px 24px 88px",
+                padding: "96px 28px 88px",
                 display: "flex", flexDirection: "column", justifyContent: "flex-end",
               }}>
-                <h1 style={{ color: "#ffffff", fontSize: "56px", fontWeight: 500, lineHeight: 0.93, letterSpacing: "-0.04em", marginBottom: "18px" }}>
-                  {panel.titleLines[0]}<br />{panel.titleLines[1]}
-                </h1>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={panel.logoSrc}
+                  alt={panel.logoAlt}
+                  style={{
+                    height: "clamp(40px, 12vw, 64px)",
+                    width: "auto",
+                    display: "block",
+                    marginBottom: "16px",
+                    maxWidth: "85%",
+                  }}
+                />
                 <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", lineHeight: 1.55, marginBottom: "28px", fontWeight: 400 }}>
                   {panel.desc}
                 </p>
