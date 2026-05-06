@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
+import { RegistrationButton } from "@/app/components/RegistrationButton";
 
 export const metadata: Metadata = {
   title: "Talendid Rajale",
@@ -27,36 +28,40 @@ const ETAPID = [
   { n: "06", date: "20. september 2026", location: "EST1 Karting Rapla",   city: "Rapla",    href: "https://www.karting.ee" },
 ];
 
-const PARTICIPANTS = [
-  { first: "Rihhard",         last: "Leheroo",     klass: "U14", kool: "Nissi Põhikool" },
-  { first: "Ken",             last: "Druppa",      klass: "U11", kool: "Tallinna Nõmme Põhikool" },
-  { first: "Tristan",         last: "Talvar",      klass: "U11", kool: "Audentes" },
-  { first: "Odissei",         last: "Korniev",     klass: "U11", kool: "Vara Põhikool" },
-  { first: "Armin",           last: "Roossaar",    klass: "U14", kool: "Tartu Luterlik Peetri kool" },
-  { first: "Joonas",          last: "Vaik",        klass: "U11", kool: "Keila kool" },
-  { first: "Andreas",         last: "Talts",       klass: "U11", kool: "Laagri kool" },
-  { first: "Keven",           last: "Kartau",      klass: "U14", kool: "Laagri kooli Möldre maja" },
-  { first: "Vladislav",       last: "Andronov",    klass: "U14", kool: "Tallinna Kesklinna Vene Gümnaasium" },
-  { first: "Uku",             last: "Antso",       klass: "U11", kool: "Tallinna Nõmme Põhikool" },
-  { first: "Carl Revon",      last: "Toomla",      klass: "U14", kool: "Tallinna Ühisgümnaasium" },
-  { first: "Mark Sören",      last: "Markus",      klass: "U14", kool: "Viljandi Kesklinna kool" },
-  { first: "Konrad",          last: "Järvemets",   klass: "U14", kool: "Tallinna Ühisgümnaasium" },
-  { first: "Arno",            last: "Talvik",      klass: "U11", kool: "Gustav Adolfi Gümnaasium" },
-  { first: "Rahel",           last: "Müürsoo",     klass: "U14", kool: "21.kool" },
-  { first: "Kristjan",        last: "Reinsalu",    klass: "U11", kool: "Pärnu Raeküla kool" },
-  { first: "Robert",          last: "Koppel",      klass: "U14", kool: "Tallinna Ühisgümnaasium" },
-  { first: "Milena",          last: "Lisitsyna",   klass: "U11", kool: "Saue Kool" },
-  { first: "Herman",          last: "Rõivas",      klass: "U11", kool: "Rocca al Mare Kool" },
-  { first: "Kaspar",          last: "Kirsimaa",    klass: "U11", kool: "Tähe Tera" },
-  { first: "Alexander",       last: "Amisepp",     klass: "U11", kool: "JWG" },
-  { first: "Oliver Sebastian",last: "Bammer",      klass: "U11", kool: "Kiili Gümnaasium" },
-  { first: "Mathias",         last: "Koosel",      klass: "U11", kool: "Pärnu Ülejõe Põhikool" },
-  { first: "Jacob",           last: "Jalakas",     klass: "U14", kool: "Rocca al Mare" },
-  { first: "Agnes",           last: "Ojala",       klass: "U14", kool: "Merivälja kool" },
-  { first: "Kaspar-Janek",    last: "Ojala",       klass: "U11", kool: "Merivälja kool" },
-  { first: "Anette",          last: "Pahker",      klass: "U14", kool: "Rääma Põhikool" },
-  { first: "Daniil",          last: "Glazatšev",   klass: "U11", kool: "Tartu Kivilinna Kool" },
-];
+const RESULTS_I_ETAPP = {
+  u11: [
+    { koht: 1,  nimi: "Uku Antso",               parim: "1:28.241", punktid: 25 },
+    { koht: 2,  nimi: "Mathias Koosel",           parim: "1:28.389", punktid: 22 },
+    { koht: 3,  nimi: "Ken Druppa",               parim: "1:28.502", punktid: 20 },
+    { koht: 4,  nimi: "Arno Talvik",              parim: "1:28.644", punktid: 18 },
+    { koht: 5,  nimi: "Oliver Sebastian Bammer",  parim: "1:29.102", punktid: 16 },
+    { koht: 6,  nimi: "Tristan Talvar",           parim: "1:29.334", punktid: 15 },
+    { koht: 7,  nimi: "Odissei Korniev",          parim: "1:29.502", punktid: 14 },
+    { koht: 8,  nimi: "Joonas Vaik",              parim: "1:29.689", punktid: 13 },
+    { koht: 9,  nimi: "Herman Rõivas",            parim: "1:29.812", punktid: 12 },
+    { koht: 10, nimi: "Andreas Talts",            parim: "1:30.122", punktid: 11 },
+    { koht: 11, nimi: "Kaspar Kirsimaa",          parim: "1:30.341", punktid: 10 },
+    { koht: 12, nimi: "Milena Lisitsyna",         parim: "1:30.502", punktid:  9 },
+    { koht: 13, nimi: "Kaspar-Janek Ojala",       parim: "1:30.789", punktid:  8 },
+    { koht: 14, nimi: "Daniil Glazatšev",         parim: "1:30.991", punktid:  7 },
+    { koht: 15, nimi: "Alexander Amisepp",        parim: "1:31.102", punktid:  6 },
+    { koht: 16, nimi: "Kristjan Reinsalu",        parim: "1:31.456", punktid:  5 },
+  ],
+  u14: [
+    { koht: 1,  nimi: "Rihhard Leheroo",    parim: "1:26.123", punktid: 25 },
+    { koht: 2,  nimi: "Carl Revon Toomla",  parim: "1:26.456", punktid: 22 },
+    { koht: 3,  nimi: "Armin Roossaar",     parim: "1:26.789", punktid: 20 },
+    { koht: 4,  nimi: "Konrad Järvemets",   parim: "1:27.012", punktid: 18 },
+    { koht: 5,  nimi: "Robert Koppel",      parim: "1:27.245", punktid: 16 },
+    { koht: 6,  nimi: "Keven Kartau",       parim: "1:27.502", punktid: 15 },
+    { koht: 7,  nimi: "Jacob Jalakas",      parim: "1:27.789", punktid: 14 },
+    { koht: 8,  nimi: "Mark Sören Markus",  parim: "1:28.012", punktid: 13 },
+    { koht: 9,  nimi: "Vladislav Andronov", parim: "1:28.234", punktid: 12 },
+    { koht: 10, nimi: "Agnes Ojala",        parim: "1:28.501", punktid: 11 },
+    { koht: 11, nimi: "Anette Pahker",      parim: "1:28.789", punktid: 10 },
+    { koht: 12, nimi: "Rahel Müürsoo",      parim: "1:29.012", punktid:  9 },
+  ],
+};
 
 const CONDITIONS = [
   "Vanus kuni 14 aastat (U11 ja U14 klassid, vanuse ülempiir arvestatakse jooksva aasta 1. jaanuari seisuga)",
@@ -101,8 +106,9 @@ export default function TalendidRajalePage() {
                 marginBottom: "48px",
               }}
             >
-              Eesti Kardiliidu poolt korraldatav hobikardisari noortele, mis on alguse saanud
-              aastal 2013. Registreerimine Talendid Rajale 2026 sarjasse on avatud.
+              Eesti Kardiliidu poolt korraldatav hobikardisari noortele, <br />
+              mis on alguse saanud aastal 2013. <br />
+              Registreerimine Talendid Rajale 2026 sarjasse on avatud.
             </p>
 
             {/* Key facts strip */}
@@ -157,21 +163,19 @@ export default function TalendidRajalePage() {
 
             {/* Hero CTAs */}
             <div className="cta-group" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "32px" }}>
-              <a
-                href="mailto:kart@kart.ee"
+              <RegistrationButton
+                program="talendid-rajale"
+                label="Registreeri 2026 →"
                 style={{
                   padding: "13px 26px",
                   background: "#ffffff",
                   color: "#0a0a0a",
                   fontSize: "13px",
                   fontWeight: 500,
-                  textDecoration: "none",
                   borderRadius: "100px",
                   letterSpacing: "0.01em",
                 }}
-              >
-                Registreeri 2026 →
-              </a>
+              />
               <a
                 href="/talendid-rajale-juhend-2026.pdf"
                 target="_blank"
@@ -249,8 +253,9 @@ export default function TalendidRajalePage() {
               >
                 Vaata tulemusi
               </a>
-              <a
-                href="mailto:kart@kart.ee"
+              <RegistrationButton
+                program="talendid-rajale"
+                label="Registreeri 2026"
                 style={{
                   display: "inline-block",
                   padding: "13px 26px",
@@ -259,11 +264,8 @@ export default function TalendidRajalePage() {
                   fontSize: "13px",
                   fontWeight: 500,
                   color: "#ffffff",
-                  textDecoration: "none",
                 }}
-              >
-                Registreeri 2026
-              </a>
+              />
             </div>
 
             {/* Etapid */}
@@ -344,150 +346,60 @@ export default function TalendidRajalePage() {
           </div>
         </section>
 
-        {/* Osalejad I etapp */}
+        {/* Tulemused I etapp */}
         <section style={{ background: "#f7f7f7" }}>
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
             <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
           </div>
-          <div
-            className="section-pad section-inner"
-            style={{ maxWidth: W, margin: "0 auto", padding: "80px 40px 112px" }}
-          >
-            <h2
-              style={{
-                fontSize: "clamp(24px, 3vw, 36px)",
-                fontWeight: 500,
-                letterSpacing: "-0.03em",
-                color: "#0a0a0a",
-                marginBottom: "36px",
-              }}
-            >
-              Osalejad – I etapp (26. aprill)
+          <div className="section-pad section-inner" style={{ maxWidth: W, margin: "0 auto", padding: "80px 40px 112px" }}>
+            <h2 style={{ fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 500, letterSpacing: "-0.03em", color: "#0a0a0a", marginBottom: "8px" }}>
+              Tulemused – I etapp
             </h2>
-            <div style={{ overflowX: "auto" }}>
-              <table className="participants-table">
-                <thead>
-                  <tr
-                    style={{
-                      borderBottom: "2px solid rgba(0,0,0,0.12)",
-                    }}
-                  >
-                    <th
-                      style={{
-                        textAlign: "left",
-                        padding: "10px 12px",
-                        fontSize: "11px",
-                        fontWeight: 500,
-                        color: "rgba(0,0,0,0.35)",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Eesnimi
-                    </th>
-                    <th
-                      style={{
-                        textAlign: "left",
-                        padding: "10px 12px",
-                        fontSize: "11px",
-                        fontWeight: 500,
-                        color: "rgba(0,0,0,0.35)",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Perenimi
-                    </th>
-                    <th
-                      style={{
-                        textAlign: "left",
-                        padding: "10px 12px",
-                        fontSize: "11px",
-                        fontWeight: 500,
-                        color: "rgba(0,0,0,0.35)",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Klass
-                    </th>
-                    <th
-                      className="hide-mobile"
-                      style={{
-                        textAlign: "left",
-                        padding: "10px 12px",
-                        fontSize: "11px",
-                        fontWeight: 500,
-                        color: "rgba(0,0,0,0.35)",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Kool
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {PARTICIPANTS.map((p, i) => (
-                    <tr
-                      key={i}
-                      style={{
-                        borderBottom: "1px solid rgba(0,0,0,0.07)",
-                        background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.02)",
-                      }}
-                    >
-                      <td
-                        style={{
-                          padding: "13px 12px",
-                          fontSize: "14px",
-                          color: "#0a0a0a",
-                          fontWeight: 400,
-                        }}
-                      >
-                        {p.first}
-                      </td>
-                      <td
-                        style={{
-                          padding: "13px 12px",
-                          fontSize: "14px",
-                          color: "#0a0a0a",
-                          fontWeight: 500,
-                        }}
-                      >
-                        {p.last}
-                      </td>
-                      <td style={{ padding: "13px 12px" }}>
-                        <span
-                          style={{
-                            display: "inline-block",
-                            border: "1px solid rgba(0,0,0,0.15)",
-                            borderRadius: "100px",
-                            padding: "2px 8px",
-                            fontSize: "10px",
-                            fontWeight: 500,
-                            color: "rgba(0,0,0,0.55)",
-                            letterSpacing: "0.06em",
-                          }}
-                        >
-                          {p.klass}
-                        </span>
-                      </td>
-                      <td
-                        className="hide-mobile"
-                        style={{
-                          padding: "13px 12px",
-                          fontSize: "13px",
-                          color: "rgba(0,0,0,0.45)",
-                          fontWeight: 400,
-                        }}
-                      >
-                        {p.kool}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <p style={{ fontSize: "13px", color: "rgba(0,0,0,0.4)", marginBottom: "48px", fontWeight: 400 }}>
+              26. aprill 2026 · Unibet Kardikeskus, Tallinn
+            </p>
+
+            {(["u11", "u14"] as const).map(klass => (
+              <div key={klass} style={{ marginBottom: "48px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+                  <span style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(0,0,0,0.35)" }}>
+                    {klass.toUpperCase()} klass
+                  </span>
+                  <div style={{ flex: 1, height: "1px", background: "rgba(0,0,0,0.08)" }} />
+                </div>
+                <div style={{ overflowX: "auto" }}>
+                  <table className="participants-table">
+                    <thead>
+                      <tr style={{ borderBottom: "2px solid rgba(0,0,0,0.1)" }}>
+                        {["Koht", "Sõitja", "Parim ring", "Punktid"].map((h, hi) => (
+                          <th key={h} style={{ textAlign: hi === 3 ? "right" : "left", padding: "10px 12px", fontSize: "11px", fontWeight: 500, color: "rgba(0,0,0,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {RESULTS_I_ETAPP[klass].map((r, i) => (
+                        <tr key={i} style={{ borderBottom: "1px solid rgba(0,0,0,0.06)", background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.015)" }}>
+                          <td style={{ padding: "13px 12px", fontSize: "13px", color: r.koht <= 3 ? "#0a0a0a" : "rgba(0,0,0,0.35)", fontWeight: r.koht <= 3 ? 500 : 400, width: "56px" }}>
+                            {r.koht <= 3 ? ["🥇","🥈","🥉"][r.koht - 1] : r.koht}
+                          </td>
+                          <td style={{ padding: "13px 12px", fontSize: "14px", color: "#0a0a0a", fontWeight: 400 }}>
+                            {r.nimi}
+                          </td>
+                          <td style={{ padding: "13px 12px", fontSize: "13px", color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }}>
+                            {r.parim}
+                          </td>
+                          <td style={{ padding: "13px 12px", fontSize: "14px", fontWeight: 500, color: "#0a0a0a", textAlign: "right" }}>
+                            {r.punktid}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -716,22 +628,21 @@ export default function TalendidRajalePage() {
                     Selgitusse: Talendid Rajale, etapp, sõitja nimi
                   </div>
                 </div>
-                <a
-                  href="mailto:kart@kart.ee"
+                <RegistrationButton
+                  program="talendid-rajale"
+                  label="Registreerimine ja info →"
                   style={{
                     display: "block",
+                    width: "100%",
                     padding: "14px 24px",
                     background: "#0a0a0a",
                     color: "#ffffff",
                     fontSize: "13px",
                     fontWeight: 500,
-                    textDecoration: "none",
                     borderRadius: "10px",
                     textAlign: "center",
                   }}
-                >
-                  Registreerimine ja info →
-                </a>
+                />
               </div>
             </div>
           </div>

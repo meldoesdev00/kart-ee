@@ -74,10 +74,20 @@ Nõusoleku valikut mäletab teie brauser (localStorage) kuni kustutamiseni.`,
 Taotlused saatke aadressile info@kart.ee — vastame 30 päeva jooksul.`,
   },
   {
-    title: "9. Turvalisus ja muudatused",
+    title: "9. Registreerimisandmete töötlemine",
+    body: `Registreerimisvormis kogume järgmisi isikuandmeid: sõitja nimi, vanus, pikkus, kaal, linn, vastutava isiku nimi, telefon ja e-posti aadress.
+
+Neid andmeid kasutatakse üksnes registreerimispäringule vastamiseks ja sõitja osalemise korraldamiseks (Talendid Rajale või Kardiakadeemia).
+
+Õiguslik alus: lepingu täitmine (IKÜM art 6(1)(b)) ja andmesubjekti nõusolek (IKÜM art 6(1)(a)).
+
+Andmeid ei edastata kolmandatele isikutele. Säilitame registreerimisandmeid kuni ürituse toimumiseni ja 30 päeva pärast seda, seejärel kustutatakse.`,
+  },
+  {
+    title: "10. Turvalisus ja muudatused",
     body: `Veebileht kasutab TLS-krüpteeringut (HTTPS). Andmeid analüütikaks kogutakse anonümiseeritud kujul.
 
-Privaatsustingimusi võime uuendada. Oluliste muudatuste korral teavitame sellest veebilehel. Viimati uuendatud: 05. mai 2026.`,
+Privaatsustingimusi võime uuendada. Oluliste muudatuste korral teavitame sellest veebilehel. Viimati uuendatud: 06. mai 2026.`,
   },
 ];
 
@@ -126,7 +136,7 @@ function PrivacyModal({ onClose }: { onClose: () => void }) {
               Privaatsuspoliitika
             </p>
             <p style={{ fontSize: "12px", color: "rgba(0,0,0,0.38)", marginTop: "2px" }}>
-              Viimati uuendatud: 05. mai 2026
+              Viimati uuendatud: 06. mai 2026
             </p>
           </div>
           <button

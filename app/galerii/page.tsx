@@ -40,17 +40,6 @@ export default function GaleriiPage() {
           style={{ background: "#0a0a0a", paddingTop: "120px", paddingBottom: "80px" }}
         >
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
-            <div
-              style={{
-                fontSize: "11px",
-                color: "rgba(255,255,255,0.3)",
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                marginBottom: "20px",
-              }}
-            >
-              Eesti Kardiliit
-            </div>
             <h1
               style={{
                 fontSize: "clamp(2.6rem, 6.5vw, 5.5rem)",
@@ -72,7 +61,8 @@ export default function GaleriiPage() {
                 maxWidth: "480px",
               }}
             >
-              Fotod ja videod etappidest, treeningutest ja võistlustest leiab Facebookist.
+              Fotod ja videod etappidest, treeningutest <br />
+              ja võistlustest leiab Facebookist.
             </p>
           </div>
         </section>

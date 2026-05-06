@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState } from "react";
+import { RegistrationModal, RegistrationProgram } from "./RegistrationModal";
 
 const PANELS = [
   {
@@ -8,8 +9,9 @@ const PANELS = [
     logoSrc: "/talendidrajale_logo_hero.svg",
     logoAlt: "Talendid Rajale",
     desc: "Kardisari noortele U11 ja U14 vanuseklassides. 6 etappi üle Eesti.",
+    program: "talendid-rajale" as RegistrationProgram,
     ctas: [
-      { label: "Registreeri →", href: "/talendid-rajale", primary: true },
+      { label: "Registreeri →", primary: true },
       { label: "Etapid 2026", href: "/talendid-rajale", primary: false },
     ],
   },
@@ -18,8 +20,9 @@ const PANELS = [
     logoSrc: "/talendidrajale_akadeemia_logo_hero.svg",
     logoAlt: "Kardiakadeemia",
     desc: "Süstemaatiline koolitusprogramm algajatele ja edasijõudnutele.",
+    program: "kardiakadeemia" as RegistrationProgram,
     ctas: [
-      { label: "Registreeri →", href: "/kardiakadeemia", primary: true },
+      { label: "Registreeri →", primary: true },
       { label: "Tutvu kursustega", href: "/kardiakadeemia", primary: false },
     ],
   },
@@ -27,40 +30,65 @@ const PANELS = [
 
 const OVERLAY = "linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.55) 45%, rgba(10,10,10,0.25) 100%)";
 
+function FacebookIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+    </svg>
+  );
+}
+
 export default function SplitHero() {
-  const [active, setActive] = useState(0);
   const [hoveredPanel, setHoveredPanel] = useState<number | null>(null);
-  const touchStartX = useRef<number>(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
-
-  const startInterval = useCallback(() => {
-    clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      setActive(v => (v + 1) % PANELS.length);
-    }, 5000);
-  }, []);
-
-  useEffect(() => {
-    startInterval();
-    return () => clearInterval(intervalRef.current);
-  }, [startInterval]);
-
-  const goTo = (i: number) => {
-    setActive(i);
-    startInterval();
-  };
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const onTouchEnd = (e: React.TouchEvent) => {
-    const delta = e.changedTouches[0].clientX - touchStartX.current;
-    if (Math.abs(delta) > 48) goTo(delta < 0 ? 1 : 0);
-  };
+  const [modal, setModal] = useState<RegistrationProgram | null>(null);
 
   return (
     <>
+      {/* Social icons — top-right on desktop, bottom-right on mobile */}
+      <div className="hero-social-icons" style={{
+        position: "fixed", zIndex: 600,
+        display: "flex", gap: "10px", alignItems: "center",
+      }}>
+        <a
+          href="https://www.facebook.com/kardiliit/?locale=et_EE"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+          style={{
+            color: "rgba(255,255,255,0.65)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            transition: "color 0.2s",
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = "#ffffff")}
+          onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.65)")}
+        >
+          <FacebookIcon />
+        </a>
+        <a
+          href="https://www.instagram.com/eesti_kardiliit/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          style={{
+            color: "rgba(255,255,255,0.65)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            transition: "color 0.2s",
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = "#ffffff")}
+          onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.65)")}
+        >
+          <InstagramIcon />
+        </a>
+      </div>
+
       {/* ── DESKTOP: side-by-side (hidden on mobile) ── */}
       <section className="hero-split-desktop" style={{
         width: "100%", height: "100svh", display: "flex", overflow: "hidden",
@@ -76,26 +104,19 @@ export default function SplitHero() {
             overflow: "hidden", position: "relative", cursor: "default",
           }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/photos/talendidrajale.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: hoveredPanel === 0 ? 0.75 : 0.5, transition: "opacity 0.45s ease" }} />
+          <img src="/photos/talendidrajale.jpg" alt="" style={{ position: "absolute", inset: 0, width: "110%", height: "110%", objectFit: "cover", opacity: hoveredPanel === 0 ? 0.75 : 0.5, transition: "opacity 0.45s ease" }} />
           <div style={{ position: "absolute", inset: 0, background: OVERLAY, opacity: hoveredPanel === 0 ? 0.2 : 1, transition: "opacity 0.45s ease" }} />
           <div style={{ position: "relative", zIndex: 1 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/talendidrajale_logo_hero.svg"
-              alt="Talendid Rajale"
-              style={{
-                height: "clamp(52px, 8vw, 96px)",
-                width: "auto",
-                display: "block",
-                marginBottom: "28px",
-                maxWidth: "100%",
-              }}
-            />
+            <img src="/talendidrajale_logo_hero.svg" alt="Talendid Rajale" style={{ height: "clamp(52px, 8vw, 96px)", width: "auto", display: "block", marginBottom: "28px", maxWidth: "100%" }} />
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "36px", fontWeight: 400 }}>
               Kardisari noortele U11 ja U14 vanuseklassides. 6 etappi üle Eesti.
             </p>
             <div className="cta-group" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-              <a href="/talendid-rajale" style={{ padding: "13px 26px", background: "#ffffff", color: "#0a0a0a", fontSize: "13px", fontWeight: 500, letterSpacing: "0.01em", textDecoration: "none", borderRadius: "100px" }}>Registreeri →</a>
+              <button
+                onClick={() => setModal("talendid-rajale")}
+                style={{ padding: "13px 26px", background: "#ffffff", color: "#0a0a0a", fontSize: "13px", fontWeight: 500, letterSpacing: "0.01em", border: "none", borderRadius: "100px", cursor: "pointer", fontFamily: "inherit" }}
+              >Registreeri →</button>
               <a href="/talendid-rajale" style={{ padding: "13px 26px", border: "1px solid rgba(255,255,255,0.22)", color: "rgba(255,255,255,0.85)", fontSize: "13px", textDecoration: "none", borderRadius: "100px" }}>Etapid 2026</a>
             </div>
           </div>
@@ -118,103 +139,76 @@ export default function SplitHero() {
           <div style={{ position: "absolute", inset: 0, background: OVERLAY, opacity: hoveredPanel === 1 ? 0.2 : 1, transition: "opacity 0.45s ease" }} />
           <div style={{ position: "relative", zIndex: 1 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/talendidrajale_akadeemia_logo_hero.svg"
-              alt="Kardiakadeemia"
-              style={{
-                height: "clamp(52px, 8vw, 96px)",
-                width: "auto",
-                display: "block",
-                marginBottom: "28px",
-                maxWidth: "100%",
-              }}
-            />
+            <img src="/talendidrajale_akadeemia_logo_hero.svg" alt="Kardiakadeemia" style={{ height: "clamp(52px, 8vw, 96px)", width: "auto", display: "block", marginBottom: "28px", maxWidth: "100%" }} />
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "36px", fontWeight: 400 }}>
               Süstemaatiline koolitusprogramm algajatele ja edasijõudnutele.
             </p>
             <div className="cta-group" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-              <a href="/kardiakadeemia" style={{ padding: "13px 26px", background: "#ffffff", color: "#0a0a0a", fontSize: "13px", fontWeight: 500, letterSpacing: "0.01em", textDecoration: "none", borderRadius: "100px" }}>Registreeri →</a>
+              <button
+                onClick={() => setModal("kardiakadeemia")}
+                style={{ padding: "13px 26px", background: "#ffffff", color: "#0a0a0a", fontSize: "13px", fontWeight: 500, letterSpacing: "0.01em", border: "none", borderRadius: "100px", cursor: "pointer", fontFamily: "inherit" }}
+              >Registreeri →</button>
               <a href="/kardiakadeemia" style={{ padding: "13px 26px", border: "1px solid rgba(255,255,255,0.22)", color: "rgba(255,255,255,0.85)", fontSize: "13px", textDecoration: "none", borderRadius: "100px" }}>Tutvu kursustega</a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── MOBILE: full-height carousel (hidden on desktop) ── */}
+      {/* ── MOBILE: vertical 50/50 split (hidden on desktop) ── */}
       <section
         className="hero-mobile"
-        style={{ width: "100%", height: "100svh", overflow: "hidden", position: "relative", display: "none" }}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
+        style={{ width: "100%", height: "100svh" }}
       >
-        <div style={{
-          display: "flex",
-          width: `${PANELS.length * 100}%`,
-          height: "100%",
-          transform: `translateX(-${active * (100 / PANELS.length)}%)`,
-          transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-        }}>
-          {PANELS.map((panel, i) => (
-            <div key={i} style={{ width: `${100 / PANELS.length}%`, height: "100%", position: "relative", background: "#0a0a0a", overflow: "hidden" }}>
+        {PANELS.map((panel, i) => (
+          <div key={i} style={{ flex: 1, position: "relative", background: "#0a0a0a", overflow: "hidden" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={panel.img} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.5 }} />
+            <div style={{ position: "absolute", inset: 0, background: OVERLAY }} />
+            {i === 0 && (
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "rgba(255,255,255,0.15)", zIndex: 2 }} />
+            )}
+            <div style={{
+              position: "absolute", inset: 0,
+              padding: i === 0 ? "96px 28px 28px" : "20px 28px 28px",
+              display: "flex", flexDirection: "column", justifyContent: "flex-end",
+            }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={panel.img} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.5 }} />
-              <div style={{ position: "absolute", inset: 0, background: OVERLAY }} />
-              <div style={{
-                position: "absolute", inset: 0,
-                padding: "96px 28px 88px",
-                display: "flex", flexDirection: "column", justifyContent: "flex-end",
-              }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={panel.logoSrc}
-                  alt={panel.logoAlt}
-                  style={{
-                    height: "clamp(60px, 17vw, 88px)",
-                    width: "auto",
-                    display: "block",
-                    marginBottom: "20px",
-                    maxWidth: "90%",
-                    alignSelf: "flex-start",
-                  }}
-                />
-                <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", lineHeight: 1.55, marginBottom: "28px", fontWeight: 400 }}>
-                  {panel.desc}
-                </p>
-                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                  {panel.ctas.map((cta, k) => (
+              <img src={panel.logoSrc} alt={panel.logoAlt} style={{ height: "clamp(36px, 10vw, 52px)", width: "auto", display: "block", marginBottom: "12px", maxWidth: "85%", alignSelf: "flex-start" }} />
+              <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "13px", lineHeight: 1.5, marginBottom: "16px", fontWeight: 400 }}>
+                {panel.desc}
+              </p>
+              <div style={{ display: "flex", gap: "8px" }}>
+                {panel.ctas.map((cta, k) => (
+                  cta.primary ? (
+                    <button
+                      key={k}
+                      onClick={() => setModal(panel.program)}
+                      style={{
+                        padding: "10px 18px",
+                        background: "#ffffff", color: "#0a0a0a",
+                        border: "none", fontSize: "12px", fontWeight: 500,
+                        borderRadius: "100px", cursor: "pointer",
+                        fontFamily: "inherit", whiteSpace: "nowrap",
+                      }}
+                    >{cta.label}</button>
+                  ) : (
                     <a key={k} href={cta.href} style={{
-                      padding: "12px 22px",
-                      background: cta.primary ? "#ffffff" : "transparent",
-                      color: cta.primary ? "#0a0a0a" : "rgba(255,255,255,0.85)",
-                      border: cta.primary ? "none" : "1px solid rgba(255,255,255,0.22)",
-                      fontSize: "13px", fontWeight: cta.primary ? 500 : 400,
+                      padding: "10px 18px",
+                      background: "transparent", color: "rgba(255,255,255,0.85)",
+                      border: "1px solid rgba(255,255,255,0.22)",
+                      fontSize: "12px", fontWeight: 400,
                       textDecoration: "none", borderRadius: "100px",
-                    }}>
-                      {cta.label}
-                    </a>
-                  ))}
-                </div>
+                      whiteSpace: "nowrap",
+                    }}>{cta.label}</a>
+                  )
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Dot indicators */}
-        <div style={{
-          position: "absolute", bottom: "32px", left: "50%", transform: "translateX(-50%)",
-          display: "flex", gap: "6px", zIndex: 10,
-        }}>
-          {PANELS.map((_, i) => (
-            <button key={i} onClick={() => goTo(i)} style={{
-              width: active === i ? "20px" : "6px",
-              height: "6px", borderRadius: "3px",
-              background: active === i ? "#ffffff" : "rgba(255,255,255,0.35)",
-              border: "none", cursor: "pointer", padding: 0,
-              transition: "all 0.3s ease",
-            }} />
-          ))}
-        </div>
+          </div>
+        ))}
       </section>
+
+      {modal && <RegistrationModal program={modal} onClose={() => setModal(null)} />}
     </>
   );
 }

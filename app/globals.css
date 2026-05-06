@@ -98,6 +98,12 @@ h1, h2, h3 {
   font-size: 14px;
 }
 
+/* Hero section visibility defaults */
+.hero-mobile { display: none; }
+
+/* Social icons: top-right on desktop */
+.hero-social-icons { top: 24px; right: 28px; }
+
 /* ═══════════════════════════════════════════════════════════════
    ≤900px – TABLET / NARROW (collapse multi-col layouts)
    ═══════════════════════════════════════════════════════════════ */
@@ -267,8 +273,14 @@ h1, h2, h3 {
   .hero-split-desktop {
     display: none !important;
   }
+  .hero-social-icons {
+    top: auto;
+    bottom: 28px;
+    right: 20px;
+  }
   .hero-mobile {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   /* ── CTA buttons: inline, not full-width banners ──────────── */
