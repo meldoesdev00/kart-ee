@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const PROGRAM_LABEL: Record<string, string> = {
   "talendid-rajale": "Talendid Rajale 2026",
   "kardiakadeemia": "Kardiakadeemia",
 };
 
 export async function POST(req: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   const { nimi, vanus, pikkus, kaal, linn, vastutava, telefon, email, program } = await req.json();
 
   const label = PROGRAM_LABEL[program] ?? program;
