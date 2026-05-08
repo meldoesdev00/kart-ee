@@ -21,6 +21,7 @@ type F = { nimi: string; vanus: string; pikkus: string; kaal: string; linn: stri
 
 export function RegistrationModal({ program, onClose }: { program: RegistrationProgram; onClose: () => void }) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState<F>({ nimi: "", vanus: "", pikkus: "", kaal: "", linn: "", vastutava: "", telefon: "", email: "" });
 
   useEffect(() => {
@@ -96,7 +97,17 @@ export function RegistrationModal({ program, onClose }: { program: RegistrationP
             </div>
           ) : (
             <form
-              onSubmit={e => { e.preventDefault(); setSubmitted(true); }}
+              onSubmit={async e => {
+                e.preventDefault();
+                setLoading(true);
+                await fetch("/api/register", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ ...form, program }),
+                });
+                setLoading(false);
+                setSubmitted(true);
+              }}
               style={{ display: "flex", flexDirection: "column", gap: "14px" }}
             >
               <div>
@@ -142,15 +153,18 @@ export function RegistrationModal({ program, onClose }: { program: RegistrationP
 
               <button
                 type="submit"
+                disabled={loading}
                 style={{
                   marginTop: "4px", padding: "14px",
-                  background: "#0a0a0a", color: "#ffffff",
+                  background: loading ? "rgba(0,0,0,0.4)" : "#0a0a0a", color: "#ffffff",
                   border: "none", borderRadius: "10px",
                   fontSize: "13px", fontWeight: 500,
-                  cursor: "pointer", fontFamily: "inherit", letterSpacing: "0.01em",
+                  cursor: loading ? "default" : "pointer",
+                  fontFamily: "inherit", letterSpacing: "0.01em",
+                  transition: "background 0.2s",
                 }}
               >
-                Saada registreerimistaotlus →
+                {loading ? "Saadan…" : "Saada registreerimistaotlus →"}
               </button>
               <p style={{ fontSize: "11px", color: "rgba(0,0,0,0.3)", lineHeight: 1.6, textAlign: "center" }}>
                 Andmeid kasutatakse üksnes registreerimispäringule vastamiseks.

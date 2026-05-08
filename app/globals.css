@@ -281,6 +281,9 @@ h1, h2, h3 {
   .hero-mobile {
     display: flex !important;
     flex-direction: column !important;
+    position: fixed !important;
+    inset: 0 !important;
+    height: auto !important;
   }
 
   /* ── CTA buttons: inline, not full-width banners ──────────── */

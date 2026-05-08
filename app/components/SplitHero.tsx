@@ -157,7 +157,7 @@ export default function SplitHero() {
       {/* ── MOBILE: vertical 50/50 split (hidden on desktop) ── */}
       <section
         className="hero-mobile"
-        style={{ width: "100%", height: "100svh", background: "#0a0a0a" }}
+        style={{ background: "#0a0a0a" }}
       >
         {PANELS.map((panel, i) => (
           <div key={i} style={{ flex: 1, position: "relative", background: "#0a0a0a", overflow: "hidden" }}>
