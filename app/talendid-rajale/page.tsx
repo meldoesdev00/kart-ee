@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
 import { RegistrationButton } from "@/app/components/RegistrationButton";
+import { EtappTulemused } from "@/app/components/EtappTulemused";
+import { client } from "@/sanity/lib/client";
+import { ETAPP_TULEMUSED_QUERY } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Talendid Rajale",
@@ -20,48 +23,14 @@ export const metadata: Metadata = {
 const W = "min(1280px, 100vw - 80px)";
 
 const ETAPID = [
-  { n: "01", date: "26. aprill 2026",    location: "Unibet Kardikeskus",   city: "Tallinn",  href: "https://kardikeskus.ee" },
+  { n: "01", date: "26. aprill 2026",    location: "Unibet Kardikeskus",   city: "Tallinn",  href: "https://www.hobikart.ee/" },
   { n: "02", date: "24. mai 2026",       location: "EST1 Karting Aravete", city: "Aravete",  href: "https://www.karting.ee" },
   { n: "03", date: "28. juuni 2026",     location: "Kartdagö Käina",       city: "Käina",    href: "https://www.kartdago.ee" },
   { n: "04", date: "26. juuli 2026",     location: "Kartdagö Tabasalu",    city: "Tabasalu", href: "https://www.kartdago.ee" },
-  { n: "05", date: "23. august 2026",    location: "LaitseRallyPark",      city: "Laitse",   href: "https://www.laitserallypark.ee" },
+  { n: "05", date: "23. august 2026",    location: "LaitseRallyPark",      city: "Laitse",   href: "https://laitserallypark.ee/teenused/kardisoit/" },
   { n: "06", date: "20. september 2026", location: "EST1 Karting Rapla",   city: "Rapla",    href: "https://www.karting.ee" },
 ];
 
-const RESULTS_I_ETAPP = {
-  u11: [
-    { koht: 1,  nimi: "Uku Antso",               parim: "1:28.241", punktid: 25 },
-    { koht: 2,  nimi: "Mathias Koosel",           parim: "1:28.389", punktid: 22 },
-    { koht: 3,  nimi: "Ken Druppa",               parim: "1:28.502", punktid: 20 },
-    { koht: 4,  nimi: "Arno Talvik",              parim: "1:28.644", punktid: 18 },
-    { koht: 5,  nimi: "Oliver Sebastian Bammer",  parim: "1:29.102", punktid: 16 },
-    { koht: 6,  nimi: "Tristan Talvar",           parim: "1:29.334", punktid: 15 },
-    { koht: 7,  nimi: "Odissei Korniev",          parim: "1:29.502", punktid: 14 },
-    { koht: 8,  nimi: "Joonas Vaik",              parim: "1:29.689", punktid: 13 },
-    { koht: 9,  nimi: "Herman Rõivas",            parim: "1:29.812", punktid: 12 },
-    { koht: 10, nimi: "Andreas Talts",            parim: "1:30.122", punktid: 11 },
-    { koht: 11, nimi: "Kaspar Kirsimaa",          parim: "1:30.341", punktid: 10 },
-    { koht: 12, nimi: "Milena Lisitsyna",         parim: "1:30.502", punktid:  9 },
-    { koht: 13, nimi: "Kaspar-Janek Ojala",       parim: "1:30.789", punktid:  8 },
-    { koht: 14, nimi: "Daniil Glazatšev",         parim: "1:30.991", punktid:  7 },
-    { koht: 15, nimi: "Alexander Amisepp",        parim: "1:31.102", punktid:  6 },
-    { koht: 16, nimi: "Kristjan Reinsalu",        parim: "1:31.456", punktid:  5 },
-  ],
-  u14: [
-    { koht: 1,  nimi: "Rihhard Leheroo",    parim: "1:26.123", punktid: 25 },
-    { koht: 2,  nimi: "Carl Revon Toomla",  parim: "1:26.456", punktid: 22 },
-    { koht: 3,  nimi: "Armin Roossaar",     parim: "1:26.789", punktid: 20 },
-    { koht: 4,  nimi: "Konrad Järvemets",   parim: "1:27.012", punktid: 18 },
-    { koht: 5,  nimi: "Robert Koppel",      parim: "1:27.245", punktid: 16 },
-    { koht: 6,  nimi: "Keven Kartau",       parim: "1:27.502", punktid: 15 },
-    { koht: 7,  nimi: "Jacob Jalakas",      parim: "1:27.789", punktid: 14 },
-    { koht: 8,  nimi: "Mark Sören Markus",  parim: "1:28.012", punktid: 13 },
-    { koht: 9,  nimi: "Vladislav Andronov", parim: "1:28.234", punktid: 12 },
-    { koht: 10, nimi: "Agnes Ojala",        parim: "1:28.501", punktid: 11 },
-    { koht: 11, nimi: "Anette Pahker",      parim: "1:28.789", punktid: 10 },
-    { koht: 12, nimi: "Rahel Müürsoo",      parim: "1:29.012", punktid:  9 },
-  ],
-};
 
 const CONDITIONS = [
   "Vanus kuni 14 aastat (U11 ja U14 klassid, vanuse ülempiir arvestatakse jooksva aasta 1. jaanuari seisuga)",
@@ -72,7 +41,8 @@ const CONDITIONS = [
   "Soovituslik lisavarustus: kaelakaitse, ribikaitse, sõidukindad, kombinesoon",
 ];
 
-export default function TalendidRajalePage() {
+export default async function TalendidRajalePage() {
+  const etapid = await client.fetch(ETAPP_TULEMUSED_QUERY, {}, { next: { revalidate: 60 } });
   return (
     <>
       <Nav />
@@ -346,62 +316,7 @@ export default function TalendidRajalePage() {
           </div>
         </section>
 
-        {/* Tulemused I etapp */}
-        <section style={{ background: "#f7f7f7" }}>
-          <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
-          </div>
-          <div className="section-pad section-inner" style={{ maxWidth: W, margin: "0 auto", padding: "80px 40px 112px" }}>
-            <h2 style={{ fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 500, letterSpacing: "-0.03em", color: "#0a0a0a", marginBottom: "8px" }}>
-              Tulemused – I etapp
-            </h2>
-            <p style={{ fontSize: "13px", color: "rgba(0,0,0,0.4)", marginBottom: "48px", fontWeight: 400 }}>
-              26. aprill 2026 · Unibet Kardikeskus, Tallinn
-            </p>
-
-            {(["u11", "u14"] as const).map(klass => (
-              <div key={klass} style={{ marginBottom: "48px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-                  <span style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(0,0,0,0.35)" }}>
-                    {klass.toUpperCase()} klass
-                  </span>
-                  <div style={{ flex: 1, height: "1px", background: "rgba(0,0,0,0.08)" }} />
-                </div>
-                <div style={{ overflowX: "auto" }}>
-                  <table className="participants-table">
-                    <thead>
-                      <tr style={{ borderBottom: "2px solid rgba(0,0,0,0.1)" }}>
-                        {["Koht", "Sõitja", "Parim ring", "Punktid"].map((h, hi) => (
-                          <th key={h} style={{ textAlign: hi === 3 ? "right" : "left", padding: "10px 12px", fontSize: "11px", fontWeight: 500, color: "rgba(0,0,0,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                            {h}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {RESULTS_I_ETAPP[klass].map((r, i) => (
-                        <tr key={i} style={{ borderBottom: "1px solid rgba(0,0,0,0.06)", background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,0.015)" }}>
-                          <td style={{ padding: "13px 12px", fontSize: "13px", color: r.koht <= 3 ? "#0a0a0a" : "rgba(0,0,0,0.35)", fontWeight: r.koht <= 3 ? 500 : 400, width: "56px" }}>
-                            {r.koht <= 3 ? ["🥇","🥈","🥉"][r.koht - 1] : r.koht}
-                          </td>
-                          <td style={{ padding: "13px 12px", fontSize: "14px", color: "#0a0a0a", fontWeight: 400 }}>
-                            {r.nimi}
-                          </td>
-                          <td style={{ padding: "13px 12px", fontSize: "13px", color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }}>
-                            {r.parim}
-                          </td>
-                          <td style={{ padding: "13px 12px", fontSize: "14px", fontWeight: 500, color: "#0a0a0a", textAlign: "right" }}>
-                            {r.punktid}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <EtappTulemused etapid={etapid} />
 
         {/* Sarjast + Osalemise tingimused */}
         <section style={{ background: "#0a0a0a" }}>
