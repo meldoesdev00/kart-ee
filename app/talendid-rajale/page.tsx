@@ -225,7 +225,7 @@ export default async function TalendidRajalePage() {
               </a>
               <RegistrationButton
                 program="talendid-rajale"
-                label="Registreeri 2026"
+                label="Registreeri"
                 style={{
                   display: "inline-block",
                   padding: "13px 26px",
@@ -258,47 +258,41 @@ export default async function TalendidRajalePage() {
                   className="etapp-row"
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "48px 1fr auto",
-                    gap: "28px",
+                    gridTemplateColumns: "40px 1fr 140px 180px",
+                    gap: "24px",
                     alignItems: "center",
                     padding: "24px 0",
                     borderBottom: "1px solid rgba(0,0,0,0.07)",
                   }}
                 >
-                  <span
-                    style={{
-                      fontSize: "11px",
-                      color: "rgba(0,0,0,0.2)",
-                      fontFamily: "monospace",
-                      letterSpacing: "0.08em",
-                    }}
-                  >
+                  <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.2)", fontFamily: "monospace", letterSpacing: "0.08em" }}>
                     {e.n}
                   </span>
+                  <div>
+                    <div style={{ fontSize: "17px", fontWeight: 500, color: "#0a0a0a", letterSpacing: "-0.01em", marginBottom: "3px" }}>
+                      {e.location}
+                    </div>
+                    <div style={{ fontSize: "13px", color: "rgba(0,0,0,0.4)", fontWeight: 400 }}>
+                      {e.city}
+                    </div>
+                  </div>
                   <a
                     href={e.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="etapp-logo-wrapper"
                     style={{
-                      display: "inline-flex", alignItems: "center",
-                      background: "#0a0a0a", borderRadius: "10px",
-                      padding: "10px 18px", width: "fit-content",
-                      textDecoration: "none",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      textDecoration: "none", width: "120px", height: "40px",
+                      background: "#1e1e1e", borderRadius: "8px", flexShrink: 0,
                     }}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={e.logo} alt={e.location} style={{ height: "28px", width: "auto", display: "block" }} />
+                    <img src={e.logo} alt={e.location} style={{ maxWidth: "88px", maxHeight: "26px", width: "auto", height: "auto", objectFit: "contain", display: "block" }} />
                   </a>
                   <div
                     className="etapp-date"
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      color: "#0a0a0a",
-                      letterSpacing: "-0.01em",
-                      whiteSpace: "nowrap",
-                    }}
+                    style={{ fontSize: "14px", fontWeight: 500, color: "#0a0a0a", letterSpacing: "-0.01em", whiteSpace: "nowrap", textAlign: "right" }}
                   >
                     {e.date}
                   </div>
