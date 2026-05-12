@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { RegistrationModal, RegistrationProgram } from "./RegistrationModal";
 
 const PANELS = [
@@ -9,6 +10,7 @@ const PANELS = [
     logoSrc: "/talendidrajale_logo_hero.svg",
     logoAlt: "Talendid Rajale",
     desc: "Eesti vanim hobikardisari U11 ja U14 vanuseklassides.",
+    href: "/talendid-rajale",
     program: "talendid-rajale" as RegistrationProgram,
     ctas: [
       { label: "Registreeri →", primary: true },
@@ -20,6 +22,7 @@ const PANELS = [
     logoSrc: "/talendidrajale_akadeemia_logo_hero.svg",
     logoAlt: "Kardiakadeemia",
     desc: "Võistluskardimaailma tutvustamine noortele kardisõiduhuvilistele üle Eesti.",
+    href: "/kardiakadeemia",
     program: "kardiakadeemia" as RegistrationProgram,
     ctas: [
       { label: "Registreeri →", primary: true },
@@ -47,6 +50,7 @@ function InstagramIcon() {
 }
 
 export default function SplitHero() {
+  const router = useRouter();
   const [hoveredPanel, setHoveredPanel] = useState<number | null>(null);
   const [modal, setModal] = useState<RegistrationProgram | null>(null);
 
@@ -95,13 +99,14 @@ export default function SplitHero() {
       }}>
         {/* Panel 1 – Talendid Rajale */}
         <div
+          onClick={() => router.push("/talendid-rajale")}
           onMouseEnter={() => setHoveredPanel(0)}
           onMouseLeave={() => setHoveredPanel(null)}
           style={{
             width: "50%", background: "#0a0a0a",
             display: "flex", flexDirection: "column", justifyContent: "flex-end",
             padding: "clamp(40px,5vw,80px)", paddingTop: "120px",
-            overflow: "hidden", position: "relative", cursor: "default",
+            overflow: "hidden", position: "relative", cursor: "pointer",
           }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/photos/talendidrajale.jpg" alt="" style={{ position: "absolute", inset: 0, width: "110%", height: "110%", objectFit: "cover", opacity: hoveredPanel === 0 ? 0.75 : 0.5, transition: "opacity 0.45s ease" }} />
@@ -125,13 +130,14 @@ export default function SplitHero() {
 
         {/* Panel 2 – Kardiakadeemia */}
         <div
+          onClick={() => router.push("/kardiakadeemia")}
           onMouseEnter={() => setHoveredPanel(1)}
           onMouseLeave={() => setHoveredPanel(null)}
           style={{
             width: "50%", background: "#0a0a0a",
             display: "flex", flexDirection: "column", justifyContent: "flex-end",
             padding: "clamp(40px,5vw,80px)", paddingTop: "120px",
-            overflow: "hidden", position: "relative", cursor: "default",
+            overflow: "hidden", position: "relative", cursor: "pointer",
           }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/photos/kardiakadeemia.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: hoveredPanel === 1 ? 0.75 : 0.5, transition: "opacity 0.45s ease" }} />
@@ -158,7 +164,7 @@ export default function SplitHero() {
         style={{ background: "#0a0a0a" }}
       >
         {PANELS.map((panel, i) => (
-          <div key={i} style={{ flex: 1, position: "relative", background: "#0a0a0a", overflow: "hidden" }}>
+          <div key={i} onClick={() => router.push(panel.href)} style={{ flex: 1, position: "relative", background: "#0a0a0a", overflow: "hidden", cursor: "pointer" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={panel.img} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.5 }} />
             <div style={{ position: "absolute", inset: 0, background: OVERLAY }} />
