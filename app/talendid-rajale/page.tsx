@@ -23,12 +23,12 @@ export const metadata: Metadata = {
 const W = "min(1280px, 100vw - 80px)";
 
 const ETAPID = [
-  { n: "01", date: "26. aprill 2026",    location: "Unibet Kardikeskus",   city: "Tallinn",  href: "https://www.hobikart.ee/",                      logo: "/rajad-logod/unibet.svg"   },
-  { n: "02", date: "24. mai 2026",       location: "EST1 Karting Aravete", city: "Aravete",  href: "https://www.karting.ee",                         logo: "/rajad-logod/aravete.svg"  },
-  { n: "03", date: "28. juuni 2026",     location: "Kartdagö Käina",       city: "Käina",    href: "https://www.kartdago.ee",                        logo: "/rajad-logod/kartdago.svg" },
-  { n: "04", date: "26. juuli 2026",     location: "Kartdagö Tabasalu",    city: "Tabasalu", href: "https://www.kartdago.ee",                        logo: "/rajad-logod/kartdago.svg" },
-  { n: "05", date: "23. august 2026",    location: "LaitseRallyPark",      city: "Laitse",   href: "https://laitserallypark.ee/teenused/kardisoit/", logo: "/rajad-logod/laitse.svg"   },
-  { n: "06", date: "20. september 2026", location: "EST1 Karting Rapla",   city: "Rapla",    href: "https://www.karting.ee",                         logo: "/rajad-logod/rapla.svg"    },
+  { n: "01", date: "26. aprill 2026",    location: "Unibet Kardikeskus",   city: "Tallinn",  href: "https://www.hobikart.ee/",                      logo: "/rajad-logod/unibet.svg",   logoH: 52 },
+  { n: "02", date: "24. mai 2026",       location: "EST1 Karting Aravete", city: "Aravete",  href: "https://www.karting.ee",                         logo: "/rajad-logod/aravete.svg",  logoH: 76 },
+  { n: "03", date: "28. juuni 2026",     location: "Kartdagö Käina",       city: "Käina",    href: "https://www.kartdago.ee",                        logo: "/rajad-logod/kartdago.svg", logoH: 36 },
+  { n: "04", date: "26. juuli 2026",     location: "Kartdagö Tabasalu",    city: "Tabasalu", href: "https://www.kartdago.ee",                        logo: "/rajad-logod/kartdago.svg", logoH: 36 },
+  { n: "05", date: "23. august 2026",    location: "LaitseRallyPark",      city: "Laitse",   href: "https://laitserallypark.ee/teenused/kardisoit/", logo: "/rajad-logod/laitse.svg",   logoH: 56 },
+  { n: "06", date: "20. september 2026", location: "EST1 Karting Rapla",   city: "Rapla",    href: "https://www.karting.ee",                         logo: "/rajad-logod/rapla.svg",    logoH: 76 },
 ];
 
 
@@ -135,7 +135,7 @@ export default async function TalendidRajalePage() {
             <div className="cta-group" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "32px" }}>
               <RegistrationButton
                 program="talendid-rajale"
-                label="Registreeri 2026 →"
+                label="Registreeri →"
                 style={{
                   padding: "13px 26px",
                   background: "#ffffff",
@@ -258,7 +258,7 @@ export default async function TalendidRajalePage() {
                   className="etapp-row"
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "40px 1fr 140px 180px",
+                    gridTemplateColumns: "40px 1fr 160px 180px",
                     gap: "24px",
                     alignItems: "center",
                     padding: "24px 0",
@@ -282,13 +282,12 @@ export default async function TalendidRajalePage() {
                     rel="noopener noreferrer"
                     className="etapp-logo-wrapper"
                     style={{
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      textDecoration: "none", width: "120px", height: "40px",
-                      background: "#1e1e1e", borderRadius: "8px", flexShrink: 0,
+                      display: "flex", alignItems: "center",
+                      textDecoration: "none", width: "160px", height: "80px", flexShrink: 0,
                     }}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={e.logo} alt={e.location} style={{ maxWidth: "88px", maxHeight: "26px", width: "auto", height: "auto", objectFit: "contain", display: "block" }} />
+                    <img src={e.logo} alt={e.location} style={{ maxWidth: "160px", maxHeight: `${e.logoH}px`, width: "auto", height: "auto", objectFit: "contain", objectPosition: "left center", display: "block" }} />
                   </a>
                   <div
                     className="etapp-date"
