@@ -249,7 +249,7 @@ export default async function TalendidRajalePage() {
                 marginBottom: "28px",
               }}
             >
-              Ajakava 2026
+              Kalender 2026
             </h3>
             <div style={{ borderTop: "1px solid rgba(0,0,0,0.1)" }}>
               {ETAPID.map((e, i) => (

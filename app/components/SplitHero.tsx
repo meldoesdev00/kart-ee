@@ -8,7 +8,7 @@ const PANELS = [
     img: "/photos/talendidrajale.jpg",
     logoSrc: "/talendidrajale_logo_hero.svg",
     logoAlt: "Talendid Rajale",
-    desc: "Kardisari noortele U11 ja U14 vanuseklassides. 6 etappi üle Eesti.",
+    desc: "Eesti vanim hobikardisari U11 ja U14 vanuseklassides.",
     program: "talendid-rajale" as RegistrationProgram,
     ctas: [
       { label: "Registreeri →", primary: true },
@@ -19,7 +19,7 @@ const PANELS = [
     img: "/photos/kardiakadeemia.jpg",
     logoSrc: "/talendidrajale_akadeemia_logo_hero.svg",
     logoAlt: "Kardiakadeemia",
-    desc: "Süstemaatiline koolitusprogramm algajatele ja edasijõudnutele.",
+    desc: "Võistluskardimaailma tutvustamine noortele kardisõiduhuvilistele üle Eesti.",
     program: "kardiakadeemia" as RegistrationProgram,
     ctas: [
       { label: "Registreeri →", primary: true },
@@ -109,16 +109,15 @@ export default function SplitHero() {
           <div style={{ position: "relative", zIndex: 1 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/talendidrajale_logo_hero.svg" alt="Talendid Rajale" style={{ height: "clamp(52px, 8vw, 96px)", width: "auto", display: "block", marginBottom: "28px", maxWidth: "100%" }} />
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "36px", fontWeight: 400 }}>
-              Kardisari noortele U11 ja U14 vanuseklassides. 6 etappi üle Eesti.
+            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "0", fontWeight: 400 }}>
+              Eesti vanim hobikardisari U11 ja U14 vanuseklassides.
             </p>
-            <div className="cta-group" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-              <button
-                onClick={() => setModal("talendid-rajale")}
-                style={{ padding: "13px 26px", background: "#ffffff", color: "#0a0a0a", fontSize: "13px", fontWeight: 500, letterSpacing: "0.01em", border: "none", borderRadius: "100px", cursor: "pointer", fontFamily: "inherit" }}
-              >Registreeri →</button>
+            {/* desktop CTAs hidden — uncomment to restore:
+            <div className="cta-group" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "36px" }}>
+              <button onClick={() => setModal("talendid-rajale")} style={{ padding: "13px 26px", background: "#ffffff", color: "#0a0a0a", fontSize: "13px", fontWeight: 500, letterSpacing: "0.01em", border: "none", borderRadius: "100px", cursor: "pointer", fontFamily: "inherit" }}>Registreeri →</button>
               <a href="/talendid-rajale" style={{ padding: "13px 26px", border: "1px solid rgba(255,255,255,0.22)", color: "rgba(255,255,255,0.85)", fontSize: "13px", textDecoration: "none", borderRadius: "100px" }}>Etapid 2026</a>
             </div>
+            */}
           </div>
         </div>
 
@@ -140,16 +139,15 @@ export default function SplitHero() {
           <div style={{ position: "relative", zIndex: 1 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/talendidrajale_akadeemia_logo_hero.svg" alt="Kardiakadeemia" style={{ height: "clamp(52px, 8vw, 96px)", width: "auto", display: "block", marginBottom: "28px", maxWidth: "100%" }} />
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "36px", fontWeight: 400 }}>
-              Süstemaatiline koolitusprogramm algajatele ja edasijõudnutele.
+            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "0", fontWeight: 400 }}>
+              Võistluskardimaailma tutvustamine noortele kardisõiduhuvilistele üle Eesti.
             </p>
-            <div className="cta-group" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-              <button
-                onClick={() => setModal("kardiakadeemia")}
-                style={{ padding: "13px 26px", background: "#ffffff", color: "#0a0a0a", fontSize: "13px", fontWeight: 500, letterSpacing: "0.01em", border: "none", borderRadius: "100px", cursor: "pointer", fontFamily: "inherit" }}
-              >Registreeri →</button>
+            {/* desktop CTAs hidden — uncomment to restore:
+            <div className="cta-group" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "36px" }}>
+              <button onClick={() => setModal("kardiakadeemia")} style={{ padding: "13px 26px", background: "#ffffff", color: "#0a0a0a", fontSize: "13px", fontWeight: 500, letterSpacing: "0.01em", border: "none", borderRadius: "100px", cursor: "pointer", fontFamily: "inherit" }}>Registreeri →</button>
               <a href="/kardiakadeemia" style={{ padding: "13px 26px", border: "1px solid rgba(255,255,255,0.22)", color: "rgba(255,255,255,0.85)", fontSize: "13px", textDecoration: "none", borderRadius: "100px" }}>Tutvu kursustega</a>
             </div>
+            */}
           </div>
         </div>
       </section>

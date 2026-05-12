@@ -19,14 +19,14 @@ const W = "min(1280px, 100vw - 80px)";
 
 const JUHATUS = [
   { name: "Mait Laidvee", email: "mait@kart.ee" },
-  { name: "Timo Raudsik", email: "kart@kart.ee" },
+  { name: "Timo Raudsik", email: "timo@kart.ee" },
 ];
 
 const REKVISIIDID = [
   { label: "Nimi",         value: "MTÜ Eesti Kardiliit" },
   { label: "Aadress",      value: "Pirni tn 3, Kristiine linnaosa, Tallinn, Harju maakond" },
   { label: "Registrikood", value: "80106439" },
-  { label: "Telefon",      value: "+372 520 0657" },
+  { label: "Telefon",      value: "+372 509 4720" },
 ];
 
 const MILESTONES = [

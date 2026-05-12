@@ -20,7 +20,7 @@ const SECTIONS = [
 
 export default function Nav() {
   const [scrollPct, setScrollPct] = useState(0);
-  const [section,   setSection]   = useState("Kodu");
+  const [section,   setSection]   = useState("Menüü");
   const [open,      setOpen]      = useState(false);
   const [ready,     setReady]     = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
