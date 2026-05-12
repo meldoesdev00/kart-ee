@@ -21,7 +21,7 @@ const PANELS = [
     img: "/photos/kardiakadeemia.jpg",
     logoSrc: "/talendidrajale_akadeemia_logo_hero.svg",
     logoAlt: "Kardiakadeemia",
-    desc: "Võistluskardimaailma tutvustamine noortele kardisõiduhuvilistele üle Eesti.",
+    desc: "Võistluskardi tutvustamine 5-11. aastastele noortele.",
     href: "/kardiakadeemia",
     program: "kardiakadeemia" as RegistrationProgram,
     ctas: [
@@ -178,35 +178,9 @@ export default function SplitHero() {
             }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={panel.logoSrc} alt={panel.logoAlt} style={{ height: "clamp(36px, 10vw, 52px)", width: "auto", display: "block", marginBottom: "12px", maxWidth: "85%", alignSelf: "flex-start" }} />
-              <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "13px", lineHeight: 1.5, marginBottom: "16px", fontWeight: 400 }}>
+              <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "13px", lineHeight: 1.5, marginBottom: "0", fontWeight: 400 }}>
                 {panel.desc}
               </p>
-              <div style={{ display: "flex", gap: "8px" }}>
-                {panel.ctas.map((cta, k) => (
-                  cta.primary ? (
-                    <button
-                      key={k}
-                      onClick={() => setModal(panel.program)}
-                      style={{
-                        padding: "10px 18px",
-                        background: "#ffffff", color: "#0a0a0a",
-                        border: "none", fontSize: "12px", fontWeight: 500,
-                        borderRadius: "100px", cursor: "pointer",
-                        fontFamily: "inherit", whiteSpace: "nowrap",
-                      }}
-                    >{cta.label}</button>
-                  ) : (
-                    <a key={k} href={cta.href} style={{
-                      padding: "10px 18px",
-                      background: "transparent", color: "rgba(255,255,255,0.85)",
-                      border: "1px solid rgba(255,255,255,0.22)",
-                      fontSize: "12px", fontWeight: 400,
-                      textDecoration: "none", borderRadius: "100px",
-                      whiteSpace: "nowrap",
-                    }}>{cta.label}</a>
-                  )
-                ))}
-              </div>
             </div>
           </div>
         ))}

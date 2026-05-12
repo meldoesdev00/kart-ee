@@ -48,8 +48,7 @@ export default function KardiakadeemiaPage() {
               maxWidth: "520px",
               marginBottom: "48px",
             }}>
-              Süstemaatiline neljamooduline koolitusprogramm algajatele ja edasijõudnutele.
-              Kõik tasemed, üks koht.
+              Võistluskardimaailma tutvustamine noortele kardisõiduhuvilistele üle Eesti.
             </p>
             <div className="cta-group" style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "72px" }}>
               <RegistrationButton
