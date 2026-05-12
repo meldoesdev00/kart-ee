@@ -23,12 +23,12 @@ export const metadata: Metadata = {
 const W = "min(1280px, 100vw - 80px)";
 
 const ETAPID = [
-  { n: "01", date: "26. aprill 2026",    location: "Unibet Kardikeskus",   city: "Tallinn",  href: "https://www.hobikart.ee/" },
-  { n: "02", date: "24. mai 2026",       location: "EST1 Karting Aravete", city: "Aravete",  href: "https://www.karting.ee" },
-  { n: "03", date: "28. juuni 2026",     location: "Kartdagö Käina",       city: "Käina",    href: "https://www.kartdago.ee" },
-  { n: "04", date: "26. juuli 2026",     location: "Kartdagö Tabasalu",    city: "Tabasalu", href: "https://www.kartdago.ee" },
-  { n: "05", date: "23. august 2026",    location: "LaitseRallyPark",      city: "Laitse",   href: "https://laitserallypark.ee/teenused/kardisoit/" },
-  { n: "06", date: "20. september 2026", location: "EST1 Karting Rapla",   city: "Rapla",    href: "https://www.karting.ee" },
+  { n: "01", date: "26. aprill 2026",    location: "Unibet Kardikeskus",   city: "Tallinn",  href: "https://www.hobikart.ee/",                      logo: "/rajad-logod/unibet.svg"   },
+  { n: "02", date: "24. mai 2026",       location: "EST1 Karting Aravete", city: "Aravete",  href: "https://www.karting.ee",                         logo: "/rajad-logod/aravete.svg"  },
+  { n: "03", date: "28. juuni 2026",     location: "Kartdagö Käina",       city: "Käina",    href: "https://www.kartdago.ee",                        logo: "/rajad-logod/kartdago.svg" },
+  { n: "04", date: "26. juuli 2026",     location: "Kartdagö Tabasalu",    city: "Tabasalu", href: "https://www.kartdago.ee",                        logo: "/rajad-logod/kartdago.svg" },
+  { n: "05", date: "23. august 2026",    location: "LaitseRallyPark",      city: "Laitse",   href: "https://laitserallypark.ee/teenused/kardisoit/", logo: "/rajad-logod/laitse.svg"   },
+  { n: "06", date: "20. september 2026", location: "EST1 Karting Rapla",   city: "Rapla",    href: "https://www.karting.ee",                         logo: "/rajad-logod/rapla.svg"    },
 ];
 
 
@@ -167,7 +167,7 @@ export default async function TalendidRajalePage() {
         </section>
 
         {/* Hooaeg 2026 */}
-        <section style={{ background: "#ffffff" }}>
+        <section style={{ background: "#f5f5f5" }}>
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
             <div style={{ height: "1px", background: "rgba(0,0,0,0.1)" }} />
           </div>
@@ -275,29 +275,21 @@ export default async function TalendidRajalePage() {
                   >
                     {e.n}
                   </span>
-                  <div>
-                    <a
-                      href={e.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="track-link"
-                      style={{
-                        fontSize: "17px",
-                        fontWeight: 500,
-                        color: "#0a0a0a",
-                        letterSpacing: "-0.01em",
-                        marginBottom: "3px",
-                        display: "block",
-                      }}
-                    >
-                      {e.location}
-                    </a>
-                    <div
-                      style={{ fontSize: "13px", color: "rgba(0,0,0,0.4)", fontWeight: 400 }}
-                    >
-                      {e.city}
-                    </div>
-                  </div>
+                  <a
+                    href={e.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="etapp-logo-wrapper"
+                    style={{
+                      display: "inline-flex", alignItems: "center",
+                      background: "#0a0a0a", borderRadius: "10px",
+                      padding: "10px 18px", width: "fit-content",
+                      textDecoration: "none",
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={e.logo} alt={e.location} style={{ height: "28px", width: "auto", display: "block" }} />
+                  </a>
                   <div
                     className="etapp-date"
                     style={{
