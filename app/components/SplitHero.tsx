@@ -146,7 +146,7 @@ export default function SplitHero() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/talendidrajale_akadeemia_logo_hero.svg" alt="Kardiakadeemia" style={{ height: "clamp(52px, 8vw, 96px)", width: "auto", display: "block", marginBottom: "28px", maxWidth: "100%" }} />
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "15px", lineHeight: 1.65, maxWidth: "300px", marginBottom: "0", fontWeight: 400 }}>
-              Võistluskardimaailma tutvustamine noortele kardisõiduhuvilistele üle Eesti.
+              Võistluskardi tutvustamine 5-11. aastastele noortele.
             </p>
             {/* desktop CTAs hidden — uncomment to restore:
             <div className="cta-group" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "36px" }}>
