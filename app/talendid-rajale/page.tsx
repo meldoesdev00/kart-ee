@@ -372,16 +372,15 @@ export default async function TalendidRajalePage() {
               <div
                 style={{
                   padding: "32px",
-                  background: "#ffffff",
                   borderRadius: "16px",
-                  border: "1px solid rgba(0,0,0,0.08)",
+                  border: "1px solid rgba(255,255,255,0.12)",
                 }}
               >
                 <div style={{ marginBottom: "28px" }}>
                   <div
                     style={{
                       fontSize: "11px",
-                      color: "rgba(0,0,0,0.35)",
+                      color: "rgba(255,255,255,0.3)",
                       letterSpacing: "0.12em",
                       textTransform: "uppercase",
                       marginBottom: "8px",
@@ -394,7 +393,7 @@ export default async function TalendidRajalePage() {
                       fontSize: "36px",
                       fontWeight: 500,
                       letterSpacing: "-0.04em",
-                      color: "#0a0a0a",
+                      color: "#ffffff",
                     }}
                   >
                     €79 / etapp
@@ -404,13 +403,13 @@ export default async function TalendidRajalePage() {
                   style={{
                     marginBottom: "28px",
                     paddingBottom: "28px",
-                    borderBottom: "1px solid rgba(0,0,0,0.08)",
+                    borderBottom: "1px solid rgba(255,255,255,0.08)",
                   }}
                 >
                   <div
                     style={{
                       fontSize: "11px",
-                      color: "rgba(0,0,0,0.35)",
+                      color: "rgba(255,255,255,0.3)",
                       letterSpacing: "0.12em",
                       textTransform: "uppercase",
                       marginBottom: "10px",
@@ -421,7 +420,7 @@ export default async function TalendidRajalePage() {
                   <div
                     style={{
                       fontSize: "14px",
-                      color: "#0a0a0a",
+                      color: "#ffffff",
                       fontWeight: 500,
                       marginBottom: "4px",
                     }}
@@ -431,7 +430,7 @@ export default async function TalendidRajalePage() {
                   <div
                     style={{
                       fontSize: "13px",
-                      color: "rgba(0,0,0,0.5)",
+                      color: "rgba(255,255,255,0.4)",
                       fontFamily: "monospace",
                     }}
                   >
@@ -440,7 +439,7 @@ export default async function TalendidRajalePage() {
                   <div
                     style={{
                       fontSize: "12px",
-                      color: "rgba(0,0,0,0.4)",
+                      color: "rgba(255,255,255,0.3)",
                       marginTop: "8px",
                       lineHeight: 1.6,
                     }}
@@ -455,8 +454,8 @@ export default async function TalendidRajalePage() {
                     display: "block",
                     width: "100%",
                     padding: "14px 24px",
-                    background: "#0a0a0a",
-                    color: "#ffffff",
+                    background: "#ffffff",
+                    color: "#0a0a0a",
                     fontSize: "13px",
                     fontWeight: 500,
                     borderRadius: "10px",
