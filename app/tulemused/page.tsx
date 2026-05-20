@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
+import { client } from "@/sanity/lib/client";
+import { HOOAJA_TULEMUSED_QUERY } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Tulemused",
@@ -17,61 +19,16 @@ export const metadata: Metadata = {
 
 const W = "min(1280px, 100vw - 80px)";
 
-const GROUPS = [
-  {
-    title: "Talendid Rajale Talvekarikas 2026",
-    links: [
-      {
-        label: "U11 hooaja tulemused",
-        href: "https://www.kart.ee/_files/ugd/f55c36_b211a85fd0df4c029eb8fb55e932b48b.pdf",
-      },
-      {
-        label: "U14 hooaja tulemused",
-        href: "https://www.kart.ee/_files/ugd/f55c36_94954bc659a74b0bb2f7b663202adad9.pdf",
-      },
-    ],
-  },
-  {
-    title: "Talendid Rajale 2025",
-    links: [
-      {
-        label: "U11 hooaja tulemused",
-        href: "https://www.kart.ee/_files/ugd/f55c36_c611546dbea84b488fffa1381845b604.pdf",
-      },
-      {
-        label: "U14 hooaja tulemused",
-        href: "https://www.kart.ee/_files/ugd/f55c36_da6d894f4af6437c9a94c93740e62a86.pdf",
-      },
-      {
-        label: "Koolide punktiarvestus",
-        href: "https://www.kart.ee/_files/ugd/f55c36_9c5cbbca31f34b53969e3f7a7b07496c.pdf",
-      },
-    ],
-  },
-  {
-    title: "Talendid Rajale 2024 ja 28. Hiiumaa Karikas",
-    links: [
-      {
-        label: "U20 hooaja tulemused",
-        href: "https://www.kart.ee/_files/ugd/f55c36_b425760e4296485ba7df8223958314d8.pdf",
-      },
-      {
-        label: "U12 hooaja tulemused",
-        href: "https://www.kart.ee/_files/ugd/f55c36_efb5bf4af12c4577aca4d9e329d02cd1.pdf",
-      },
-      {
-        label: "Koolide punktiarvestus",
-        href: "https://www.kart.ee/_files/ugd/f55c36_64dcc06e4c3446699ab86b47d66944a5.pdf",
-      },
-      {
-        label: "28. Hiiumaa Karikas",
-        href: "https://padlet.com/asper_timing/09-10-08-2024-28-hiiumaa-karikas-kardispordis-talendid-rajal-ejluh6y5qvm1225q",
-      },
-    ],
-  },
-];
+type Lnk  = { nimetus: string; url: string };
+type Group = { _id: string; pealkiri: string; lingid: Lnk[] };
 
-export default function TulemUsedPage() {
+export default async function TulemUsedPage() {
+  const groups: Group[] = await client.fetch(
+    HOOAJA_TULEMUSED_QUERY,
+    {},
+    { next: { revalidate: 60 } }
+  );
+
   return (
     <>
       <Nav />
@@ -106,13 +63,13 @@ export default function TulemUsedPage() {
             style={{ maxWidth: W, margin: "0 auto", padding: "80px 40px 112px" }}
           >
             <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-              {GROUPS.map((group, gi) => (
+              {groups.map((group, gi) => (
                 <div
-                  key={gi}
+                  key={group._id}
                   style={{
                     paddingTop: gi === 0 ? "0" : "56px",
                     paddingBottom: "56px",
-                    borderBottom: gi < GROUPS.length - 1 ? "1px solid rgba(0,0,0,0.1)" : "none",
+                    borderBottom: gi < groups.length - 1 ? "1px solid rgba(0,0,0,0.1)" : "none",
                   }}
                 >
                   <h2
@@ -124,10 +81,10 @@ export default function TulemUsedPage() {
                       marginBottom: "28px",
                     }}
                   >
-                    {group.title}
+                    {group.pealkiri}
                   </h2>
                   <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                    {group.links.map((link, li) => (
+                    {group.lingid?.map((link, li) => (
                       <div
                         key={li}
                         className="result-row"
@@ -147,10 +104,10 @@ export default function TulemUsedPage() {
                             fontWeight: 400,
                           }}
                         >
-                          {link.label}
+                          {link.nimetus}
                         </span>
                         <a
-                          href={link.href}
+                          href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="result-btn"
