@@ -453,7 +453,11 @@ h1, h2, h3 {
   }
 }
 
-/* Kalender 2026 — venue logo */
+/* Kalender 2026 — venue logo hover */
 .etapp-logo-wrapper img {
-  display: block;
+  filter: grayscale(100%);
+  transition: filter 0.35s ease;
+}
+.etapp-row:hover .etapp-logo-wrapper img {
+  filter: none;
 }
