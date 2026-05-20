@@ -511,7 +511,7 @@ export default async function TalendidRajalePage() {
                                 padding: "12px 0",
                                 borderBottom: "1px solid rgba(0,0,0,0.06)",
                               }}>
-                                <span style={{ fontSize: "15px", fontWeight: 500, color: "#0a0a0a", letterSpacing: "-0.01em" }}>{o.nimi}</span>
+                                <span style={{ fontSize: "15px", fontWeight: 400, color: "#0a0a0a", letterSpacing: "-0.01em" }}>{o.nimi}</span>
                                 <span style={{ fontSize: "12px", color: "rgba(0,0,0,0.35)" }}>{o.kool}</span>
                               </div>
                             ))}
