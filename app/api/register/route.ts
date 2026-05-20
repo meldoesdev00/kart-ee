@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { writeClient } from "@/sanity/lib/writeClient";
 
 const PROGRAM_LABEL: Record<string, string> = {
   "talendid-rajale": "Talendid Rajale 2026",
@@ -99,9 +100,22 @@ export async function POST(req: NextRequest) {
       html: autoReplyHtml,
     });
 
+    if (program === "talendid-rajale" && process.env.SANITY_WRITE_TOKEN) {
+      const { nimi, vanuseklass, kool, etapp } = body;
+      const etappNr = etapp?.match(/^(\d+)/)?.[1]?.padStart(2, "0") ?? "00";
+      await writeClient.create({
+        _type: "etappOsavotja",
+        etappNr,
+        etappNimi: etapp,
+        nimi,
+        vanuseklass,
+        kool,
+      });
+    }
+
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Resend error:", err);
+    console.error("Register error:", err);
     return NextResponse.json({ ok: false, error: "Saatmine ebaõnnestus" }, { status: 500 });
   }
 }

@@ -4,7 +4,7 @@ import Footer from "@/app/components/Footer";
 import { RegistrationButton } from "@/app/components/RegistrationButton";
 import { EtappTulemused } from "@/app/components/EtappTulemused";
 import { client } from "@/sanity/lib/client";
-import { ETAPP_TULEMUSED_QUERY } from "@/sanity/lib/queries";
+import { ETAPP_TULEMUSED_QUERY, ETAPP_OSAVOTJAD_QUERY } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Talendid Rajale",
@@ -41,8 +41,22 @@ const CONDITIONS = [
   "Soovituslik lisavarustus: kaelakaitse, ribikaitse, sõidukindad, kombinesoon",
 ];
 
+type Osavotja = { _id: string; etappNr: string; etappNimi: string; nimi: string; vanuseklass: string; kool: string };
+
 export default async function TalendidRajalePage() {
-  const etapid = await client.fetch(ETAPP_TULEMUSED_QUERY, {}, { next: { revalidate: 60 } });
+  const [etapid, osavotjad] = await Promise.all([
+    client.fetch(ETAPP_TULEMUSED_QUERY, {}, { next: { revalidate: 60 } }),
+    client.fetch(ETAPP_OSAVOTJAD_QUERY, {}, { next: { revalidate: 60 } }),
+  ]);
+
+  // group osavotjad by etappNr
+  const osavotjadByEtapp = (osavotjad as Osavotja[]).reduce<Record<string, { etappNimi: string; u11: Osavotja[]; u14: Osavotja[] }>>((acc, o) => {
+    if (!acc[o.etappNr]) acc[o.etappNr] = { etappNimi: o.etappNimi, u11: [], u14: [] };
+    if (o.vanuseklass === "U11") acc[o.etappNr].u11.push(o);
+    else if (o.vanuseklass === "U14") acc[o.etappNr].u14.push(o);
+    return acc;
+  }, {});
+  const osavotjadEtapid = Object.entries(osavotjadByEtapp).sort(([a], [b]) => a.localeCompare(b));
   return (
     <>
       <Nav />
@@ -301,101 +315,7 @@ export default async function TalendidRajalePage() {
           </div>
         </section>
 
-        <EtappTulemused etapid={etapid} />
-
-        {/* Sarjast + Osalemise tingimused */}
-        <section style={{ background: "#0a0a0a" }}>
-          <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ height: "1px", background: "rgba(255,255,255,0.08)" }} />
-          </div>
-          <div
-            className="section-pad section-inner"
-            style={{ maxWidth: W, margin: "0 auto", padding: "80px 40px 112px" }}
-          >
-            <div
-              className="section-header-grid"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "64px",
-                alignItems: "start",
-              }}
-            >
-              <div>
-                <h2
-                  style={{
-                    fontSize: "clamp(28px, 3vw, 44px)",
-                    fontWeight: 500,
-                    letterSpacing: "-0.03em",
-                    color: "#ffffff",
-                    marginBottom: "28px",
-                  }}
-                >
-                  Sarjast
-                </h2>
-                <p
-                  style={{
-                    fontSize: "15px",
-                    lineHeight: 1.8,
-                    color: "rgba(255,255,255,0.45)",
-                    fontWeight: 400,
-                  }}
-                >
-                  Talendid Rajale on Eesti Kardiliidu poolt korraldatav hobikardisari, mis on
-                  alguse saanud aastal 2013 ning mille eesmärgiks on peamiselt spordiala laiem
-                  tutvustamine ja uute huviliste kaasamine. See on ainulaadne võimalus vähese
-                  eelarvega osaleda kardispordi võistlustel. Tänaseks on Talendid Rajale sarjast
-                  kasvanud välja nii mõnigi Eesti tippsõitja.
-                </p>
-              </div>
-
-              <div>
-                <h3
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: 500,
-                    letterSpacing: "-0.02em",
-                    color: "#ffffff",
-                    marginBottom: "24px",
-                  }}
-                >
-                  Osalemise tingimused
-                </h3>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "14px" }}>
-                  {CONDITIONS.map((c, i) => (
-                    <li
-                      key={i}
-                      style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}
-                    >
-                      <div
-                        style={{
-                          width: "5px",
-                          height: "5px",
-                          borderRadius: "50%",
-                          background: "rgba(255,255,255,0.3)",
-                          marginTop: "7px",
-                          flexShrink: 0,
-                        }}
-                      />
-                      <span
-                        style={{
-                          fontSize: "14px",
-                          lineHeight: 1.7,
-                          color: "rgba(255,255,255,0.45)",
-                          fontWeight: 400,
-                        }}
-                      >
-                        {c}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Registration */}
+        {/* Kuidas registreeruda */}
         <section style={{ background: "#f7f7f7" }}>
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
             <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
@@ -543,6 +463,103 @@ export default async function TalendidRajalePage() {
                     textAlign: "center",
                   }}
                 />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Registreeritud võistlejad */}
+        {osavotjadEtapid.length > 0 && (
+          <section style={{ background: "#ffffff" }}>
+            <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
+              <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
+            </div>
+            <div
+              className="section-pad section-inner"
+              style={{ maxWidth: W, margin: "0 auto", padding: "80px 40px 100px" }}
+            >
+              {osavotjadEtapid.map(([nr, data], gi) => (
+                <div key={nr} style={{ marginBottom: gi < osavotjadEtapid.length - 1 ? "64px" : 0 }}>
+                  <h2 style={{ fontSize: "20px", fontWeight: 500, letterSpacing: "-0.02em", color: "#0a0a0a", marginBottom: "6px" }}>
+                    {data.etappNimi}
+                  </h2>
+                  <p style={{ fontSize: "13px", color: "rgba(0,0,0,0.35)", marginBottom: "32px" }}>
+                    Registreeritud võistlejad
+                  </p>
+                  <div className="section-grid-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px" }}>
+                    {(["U11", "U14"] as const).map((klass) => {
+                      const list = klass === "U11" ? data.u11 : data.u14;
+                      if (list.length === 0) return null;
+                      return (
+                        <div key={klass}>
+                          <div style={{ fontSize: "11px", letterSpacing: "0.1em", color: "rgba(0,0,0,0.35)", textTransform: "uppercase", marginBottom: "16px" }}>
+                            {klass}
+                          </div>
+                          <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)" }}>
+                            {list.map((o, i) => (
+                              <div key={o._id} style={{
+                                display: "grid",
+                                gridTemplateColumns: "24px 1fr auto",
+                                gap: "12px",
+                                alignItems: "baseline",
+                                padding: "12px 0",
+                                borderBottom: "1px solid rgba(0,0,0,0.06)",
+                              }}>
+                                <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.2)", fontFamily: "monospace" }}>{String(i + 1).padStart(2, "0")}</span>
+                                <span style={{ fontSize: "15px", fontWeight: 500, color: "#0a0a0a", letterSpacing: "-0.01em" }}>{o.nimi}</span>
+                                <span style={{ fontSize: "12px", color: "rgba(0,0,0,0.35)" }}>{o.kool}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <EtappTulemused etapid={etapid} />
+
+        {/* Sarjast + Osalemise tingimused */}
+        <section style={{ background: "#0a0a0a" }}>
+          <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
+            <div style={{ height: "1px", background: "rgba(255,255,255,0.08)" }} />
+          </div>
+          <div
+            className="section-pad section-inner"
+            style={{ maxWidth: W, margin: "0 auto", padding: "80px 40px 112px" }}
+          >
+            <div
+              className="section-header-grid"
+              style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "start" }}
+            >
+              <div>
+                <h2 style={{ fontSize: "clamp(28px, 3vw, 44px)", fontWeight: 500, letterSpacing: "-0.03em", color: "#ffffff", marginBottom: "28px" }}>
+                  Sarjast
+                </h2>
+                <p style={{ fontSize: "15px", lineHeight: 1.8, color: "rgba(255,255,255,0.45)", fontWeight: 400 }}>
+                  Talendid Rajale on Eesti Kardiliidu poolt korraldatav hobikardisari, mis on
+                  alguse saanud aastal 2013 ning mille eesmärgiks on peamiselt spordiala laiem
+                  tutvustamine ja uute huviliste kaasamine. See on ainulaadne võimalus vähese
+                  eelarvega osaleda kardispordi võistlustel. Tänaseks on Talendid Rajale sarjast
+                  kasvanud välja nii mõnigi Eesti tippsõitja.
+                </p>
+              </div>
+              <div>
+                <h3 style={{ fontSize: "18px", fontWeight: 500, letterSpacing: "-0.02em", color: "#ffffff", marginBottom: "24px" }}>
+                  Osalemise tingimused
+                </h3>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "14px" }}>
+                  {CONDITIONS.map((c, i) => (
+                    <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                      <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: "rgba(255,255,255,0.3)", marginTop: "7px", flexShrink: 0 }} />
+                      <span style={{ fontSize: "14px", lineHeight: 1.7, color: "rgba(255,255,255,0.45)", fontWeight: 400 }}>{c}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
