@@ -28,7 +28,7 @@ export const hooajaTulemused = defineType({
             defineField({
               name: "nimetus",
               title: "Nimetus",
-              description: "nt „U11 hooaja tulemused"",
+              description: 'nt "U11 hooaja tulemused"',
               type: "string",
               validation: (R) => R.required(),
             }),
