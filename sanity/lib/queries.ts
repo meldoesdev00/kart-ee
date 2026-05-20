@@ -1,3 +1,9 @@
+export const ETAPP_SEADED_QUERY = `
+  *[_type == "etappSeade"] | order(etappNr asc) {
+    _id, etappNr, etappLabel, etappNimi
+  }
+`;
+
 export const ETAPP_OSAVOTJAD_QUERY = `
   *[_type == "etappOsavotja"] | order(etappNr asc, nimi asc) {
     _id, etappNr, etappNimi, nimi, vanuseklass, kool

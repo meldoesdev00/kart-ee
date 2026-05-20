@@ -81,7 +81,7 @@ export function EtappTulemused({ etapid }: { etapid: EtappResult[] }) {
   const [latest, ...older] = etapid;
 
   return (
-    <section style={{ background: "#f7f7f7" }}>
+    <section style={{ background: "#f5f5f5" }}>
       <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
         <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
       </div>

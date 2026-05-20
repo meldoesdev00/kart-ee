@@ -4,7 +4,7 @@ import Footer from "@/app/components/Footer";
 import { RegistrationButton } from "@/app/components/RegistrationButton";
 import { EtappTulemused } from "@/app/components/EtappTulemused";
 import { client } from "@/sanity/lib/client";
-import { ETAPP_TULEMUSED_QUERY, ETAPP_OSAVOTJAD_QUERY } from "@/sanity/lib/queries";
+import { ETAPP_TULEMUSED_QUERY, ETAPP_OSAVOTJAD_QUERY, ETAPP_SEADED_QUERY } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Talendid Rajale",
@@ -42,14 +42,17 @@ const CONDITIONS = [
 ];
 
 type Osavotja = { _id: string; etappNr: string; etappNimi: string; nimi: string; vanuseklass: string; kool: string };
+type EtappSeade = { etappNr: string; etappLabel: string; etappNimi: string };
 
 export default async function TalendidRajalePage() {
-  const [etapid, osavotjad] = await Promise.all([
+  const [etapid, osavotjad, seaded] = await Promise.all([
     client.fetch(ETAPP_TULEMUSED_QUERY, {}, { next: { revalidate: 60 } }),
     client.fetch(ETAPP_OSAVOTJAD_QUERY, {}, { next: { revalidate: 60 } }),
+    client.fetch(ETAPP_SEADED_QUERY, {}, { next: { revalidate: 60 } }),
   ]);
 
-  // group osavotjad by etappNr
+  const seadeByNr = (seaded as EtappSeade[]).reduce<Record<string, EtappSeade>>((acc, s) => { acc[s.etappNr] = s; return acc; }, {});
+
   const osavotjadByEtapp = (osavotjad as Osavotja[]).reduce<Record<string, { etappNimi: string; u11: Osavotja[]; u14: Osavotja[] }>>((acc, o) => {
     if (!acc[o.etappNr]) acc[o.etappNr] = { etappNimi: o.etappNimi, u11: [], u14: [] };
     if (o.vanuseklass === "U11") acc[o.etappNr].u11.push(o);
@@ -469,7 +472,7 @@ export default async function TalendidRajalePage() {
 
         {/* Registreeritud võistlejad */}
         {osavotjadEtapid.length > 0 && (
-          <section style={{ background: "#ffffff" }}>
+          <section style={{ background: "#f5f5f5" }}>
             <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
               <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
             </div>
@@ -477,13 +480,17 @@ export default async function TalendidRajalePage() {
               className="section-pad section-inner"
               style={{ maxWidth: W, margin: "0 auto", padding: "80px 40px 100px" }}
             >
-              {osavotjadEtapid.map(([nr, data], gi) => (
+              {osavotjadEtapid.map(([nr, data], gi) => {
+                const seade = seadeByNr[nr];
+                const label = seade?.etappLabel ?? nr;
+                const nimi = seade?.etappNimi ?? data.etappNimi;
+                return (
                 <div key={nr} style={{ marginBottom: gi < osavotjadEtapid.length - 1 ? "64px" : 0 }}>
-                  <h2 style={{ fontSize: "20px", fontWeight: 500, letterSpacing: "-0.02em", color: "#0a0a0a", marginBottom: "6px" }}>
-                    {data.etappNimi}
+                  <h2 style={{ fontSize: "clamp(28px, 3vw, 44px)", fontWeight: 500, letterSpacing: "-0.03em", color: "#0a0a0a", marginBottom: "4px" }}>
+                    {label} — registreerinud
                   </h2>
-                  <p style={{ fontSize: "13px", color: "rgba(0,0,0,0.35)", marginBottom: "32px" }}>
-                    Registreeritud võistlejad
+                  <p style={{ fontSize: "15px", color: "rgba(0,0,0,0.4)", marginBottom: "40px", fontWeight: 400 }}>
+                    {nimi}
                   </p>
                   <div className="section-grid-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px" }}>
                     {(["U11", "U14"] as const).map((klass) => {
@@ -515,7 +522,7 @@ export default async function TalendidRajalePage() {
                     })}
                   </div>
                 </div>
-              ))}
+              ); })}
             </div>
           </section>
         )}
