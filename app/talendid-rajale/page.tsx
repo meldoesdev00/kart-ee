@@ -505,13 +505,12 @@ export default async function TalendidRajalePage() {
                             {list.map((o, i) => (
                               <div key={o._id} style={{
                                 display: "grid",
-                                gridTemplateColumns: "24px 1fr auto",
+                                gridTemplateColumns: "1fr auto",
                                 gap: "12px",
                                 alignItems: "baseline",
                                 padding: "12px 0",
                                 borderBottom: "1px solid rgba(0,0,0,0.06)",
                               }}>
-                                <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.2)", fontFamily: "monospace" }}>{String(i + 1).padStart(2, "0")}</span>
                                 <span style={{ fontSize: "15px", fontWeight: 500, color: "#0a0a0a", letterSpacing: "-0.01em" }}>{o.nimi}</span>
                                 <span style={{ fontSize: "12px", color: "rgba(0,0,0,0.35)" }}>{o.kool}</span>
                               </div>
