@@ -316,9 +316,9 @@ export default async function TalendidRajalePage() {
         </section>
 
         {/* Kuidas registreeruda */}
-        <section style={{ background: "#f7f7f7" }}>
+        <section style={{ background: "#0a0a0a" }}>
           <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
+            <div style={{ height: "1px", background: "rgba(255,255,255,0.08)" }} />
           </div>
           <div
             className="section-pad section-inner"
@@ -339,7 +339,7 @@ export default async function TalendidRajalePage() {
                     fontSize: "clamp(28px, 3vw, 44px)",
                     fontWeight: 500,
                     letterSpacing: "-0.03em",
-                    color: "#0a0a0a",
+                    color: "#ffffff",
                     marginBottom: "24px",
                   }}
                 >
@@ -349,7 +349,7 @@ export default async function TalendidRajalePage() {
                   style={{
                     fontSize: "15px",
                     lineHeight: 1.75,
-                    color: "rgba(0,0,0,0.55)",
+                    color: "rgba(255,255,255,0.45)",
                     fontWeight: 400,
                     marginBottom: "16px",
                   }}
@@ -361,7 +361,7 @@ export default async function TalendidRajalePage() {
                   style={{
                     fontSize: "15px",
                     lineHeight: 1.75,
-                    color: "rgba(0,0,0,0.55)",
+                    color: "rgba(255,255,255,0.45)",
                     fontWeight: 400,
                   }}
                 >
