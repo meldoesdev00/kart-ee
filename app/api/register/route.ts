@@ -102,11 +102,25 @@ export async function POST(req: NextRequest) {
 
     if (program === "talendid-rajale" && process.env.SANITY_WRITE_TOKEN) {
       const { nimi, vanuseklass, kool, etapp } = body;
-      const etappNr = etapp?.match(/^(\d+)/)?.[1]?.padStart(2, "0") ?? "00";
+      const ETAPP_NR: Record<string, string> = {
+        "II etapp – EST1 Karting Aravete":  "02",
+        "III etapp – Kartdagö Käina":       "03",
+        "IV etapp – Kartdagö Tabasalu":     "04",
+        "V etapp – LaitseRallyPark":        "05",
+        "VI etapp – EST1 Karting Rapla":    "06",
+      };
+      const ETAPP_NIMI: Record<string, string> = {
+        "02": "EST1 Karting Aravete",
+        "03": "Kartdagö Käina",
+        "04": "Kartdagö Tabasalu",
+        "05": "LaitseRallyPark",
+        "06": "EST1 Karting Rapla",
+      };
+      const etappNr = ETAPP_NR[etapp] ?? "00";
       await writeClient.create({
         _type: "etappOsavotja",
         etappNr,
-        etappNimi: etapp,
+        etappNimi: ETAPP_NIMI[etappNr] ?? etapp,
         nimi,
         vanuseklass,
         kool,

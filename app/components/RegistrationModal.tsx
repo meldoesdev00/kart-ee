@@ -21,7 +21,13 @@ const LBL: React.CSSProperties = {
 type TalendidForm = { nimi: string; vanuseklass: string; kool: string; etapp: string; vastutava: string; telefon: string; email: string };
 type AkadeemiaForm = { nimi: string; vanus: string; pikkus: string; kaal: string; linn: string; vastutava: string; telefon: string; email: string };
 
-const ETAPID = ["Aravete", "Käina", "Tabasalu", "Laitse RallyPark", "Rapla"];
+const ETAPID = [
+  "II etapp – EST1 Karting Aravete",
+  "III etapp – Kartdagö Käina",
+  "IV etapp – Kartdagö Tabasalu",
+  "V etapp – LaitseRallyPark",
+  "VI etapp – EST1 Karting Rapla",
+];
 const VANUSEKLASSID = ["U11", "U14"];
 
 function SuccessView() {
