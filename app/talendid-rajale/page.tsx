@@ -164,6 +164,20 @@ export default async function TalendidRajalePage() {
                 }}
               />
               <a
+                href="#registreerunud"
+                style={{
+                  padding: "13px 26px",
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  color: "rgba(255,255,255,0.85)",
+                  fontSize: "13px",
+                  fontWeight: 400,
+                  textDecoration: "none",
+                  borderRadius: "100px",
+                }}
+              >
+                Registreerunud
+              </a>
+              <a
                 href="/talendid-rajale-juhend-2026.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -472,7 +486,7 @@ export default async function TalendidRajalePage() {
 
         {/* Registreeritud võistlejad */}
         {osavotjadEtapid.length > 0 && (
-          <section style={{ background: "#f5f5f5" }}>
+          <section id="registreerunud" style={{ background: "#f5f5f5" }}>
             <div style={{ maxWidth: W, margin: "0 auto", padding: "0 40px" }}>
               <div style={{ height: "1px", background: "rgba(0,0,0,0.08)" }} />
             </div>
