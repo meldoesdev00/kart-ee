@@ -18,7 +18,7 @@ const PANELS = [
     ],
   },
   {
-    img: "/photos/kardiakadeemia.jpg",
+    img: "/photos/kardiakadeemia_new.jpg",
     logoSrc: "/talendidrajale_akadeemia_logo_hero.svg",
     logoAlt: "Kardiakadeemia",
     desc: "Võistluskardi tutvustamine 5-11. aastastele noortele.",
