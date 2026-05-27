@@ -17,7 +17,7 @@ const PANELS = [
       { label: "Etapid 2026", href: "/talendid-rajale", primary: false },
     ],
   },
-  {
+  { 
     img: "/photos/kardiakadeemia_new.jpg",
     logoSrc: "/talendidrajale_akadeemia_logo_hero.svg",
     logoAlt: "Kardiakadeemia",
@@ -140,7 +140,7 @@ export default function SplitHero() {
             overflow: "hidden", position: "relative", cursor: "pointer",
           }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/photos/kardiakadeemia.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: hoveredPanel === 1 ? 0.75 : 0.5, transition: "opacity 0.45s ease" }} />
+          <img src="/photos/kardiakadeemia_new.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: hoveredPanel === 1 ? 0.75 : 0.5, transition: "opacity 0.45s ease" }} />
           <div style={{ position: "absolute", inset: 0, background: OVERLAY, opacity: hoveredPanel === 1 ? 0.2 : 1, transition: "opacity 0.45s ease" }} />
           <div style={{ position: "relative", zIndex: 1 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
