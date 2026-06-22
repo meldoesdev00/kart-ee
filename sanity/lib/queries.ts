@@ -5,7 +5,7 @@ export const ETAPP_SEADED_QUERY = `
 `;
 
 export const ETAPP_OSAVOTJAD_QUERY = `
-  *[_type == "etappOsavotja"] | order(etappNr asc, nimi asc) {
+  *[_type == "etappOsavotja" && archived != true] | order(etappNr asc, nimi asc) {
     _id, etappNr, etappNimi, nimi, vanuseklass, kool
   }
 `;

@@ -10,6 +10,7 @@ export const etappOsavotja = defineType({
     defineField({ name: "nimi",      title: "Sõitja nimi",  type: "string" }),
     defineField({ name: "vanuseklass", title: "Vanuseklass", type: "string" }),
     defineField({ name: "kool",      title: "Kool",         type: "string" }),
+    defineField({ name: "archived",  title: "Arhiveeritud", type: "boolean", initialValue: false }),
   ],
   preview: {
     select: { title: "nimi", subtitle: "vanuseklass" },

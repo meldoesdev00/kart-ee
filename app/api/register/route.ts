@@ -10,7 +10,7 @@ const PROGRAM_LABEL: Record<string, string> = {
 const CONTACT_BLOCK = `
   <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:24px">
     Lisainfo korral:<br>
-    <a href="mailto:timo@kart.ee" style="color:#0a0a0a">timo@kart.ee</a><br>
+    <a href="mailto:heikki@kartdago.ee" style="color:#0a0a0a">heikki@kartdago.ee</a><br>
     +372 520 0657
   </p>`;
 
@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
   try {
     await resend.emails.send({
       from: "Eesti Kardiliit <info@kart.ee>",
-      to: "timo@kart.ee",
+      to: "heikki@kartdago.ee",
       replyTo: body.email,
       subject: `Uus registreerimistaotlus – ${label}`,
       html: adminHtml,
