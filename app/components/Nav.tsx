@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const LINKS = [
   { label: "Talendid Rajale", href: "/talendid-rajale" },
+  { label: "Värsked punktitabelid", href: "/talendid-rajale#punktitabel" },
   { label: "Kardiakadeemia",  href: "/kardiakadeemia" },
   { label: "Võistlussarjad",  href: "/voistlussarjad" },
   { label: "Tulemused",       href: "/tulemused" },

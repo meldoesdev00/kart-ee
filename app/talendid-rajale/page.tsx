@@ -3,8 +3,9 @@ import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
 import { RegistrationButton } from "@/app/components/RegistrationButton";
 import { EtappTulemused } from "@/app/components/EtappTulemused";
+import { HooajaPunktitabel, HooajaPunktitabelData } from "@/app/components/HooajaPunktitabel";
 import { client } from "@/sanity/lib/client";
-import { ETAPP_TULEMUSED_QUERY, ETAPP_OSAVOTJAD_QUERY, ETAPP_SEADED_QUERY } from "@/sanity/lib/queries";
+import { ETAPP_TULEMUSED_QUERY, ETAPP_OSAVOTJAD_QUERY, ETAPP_SEADED_QUERY, HOOAJA_PUNKTITABEL_QUERY } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Talendid Rajale",
@@ -45,10 +46,11 @@ type Osavotja = { _id: string; etappNr: string; etappNimi: string; nimi: string;
 type EtappSeade = { etappNr: string; etappLabel: string; etappNimi: string };
 
 export default async function TalendidRajalePage() {
-  const [etapid, osavotjad, seaded] = await Promise.all([
+  const [etapid, osavotjad, seaded, punktitabel] = await Promise.all([
     client.fetch(ETAPP_TULEMUSED_QUERY, {}, { next: { revalidate: 60 } }),
     client.fetch(ETAPP_OSAVOTJAD_QUERY, {}, { next: { revalidate: 60 } }),
     client.fetch(ETAPP_SEADED_QUERY, {}, { next: { revalidate: 60 } }),
+    client.fetch(HOOAJA_PUNKTITABEL_QUERY, {}, { next: { revalidate: 60 } }),
   ]);
 
   const seadeByNr = (seaded as EtappSeade[]).reduce<Record<string, EtappSeade>>((acc, s) => { acc[s.etappNr] = s; return acc; }, {});
@@ -540,7 +542,10 @@ export default async function TalendidRajalePage() {
           </section>
         )}
 
-        <EtappTulemused etapid={etapid} />
+        {/* Etapi tulemused (nt "Tulemused – I etapp") on ajutiselt peidetud kliendi soovil.
+            Andmed ja komponent on alles — eemalda "false &&" et taastada. */}
+        {false && <EtappTulemused etapid={etapid} />}
+        <HooajaPunktitabel data={punktitabel as HooajaPunktitabelData | null} />
 
         {/* Sarjast + Osalemise tingimused */}
         <section style={{ background: "#0a0a0a" }}>

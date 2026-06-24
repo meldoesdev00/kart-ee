@@ -10,6 +10,14 @@ export const ETAPP_OSAVOTJAD_QUERY = `
   }
 `;
 
+export const HOOAJA_PUNKTITABEL_QUERY = `
+  *[_type == "hooajaPunktitabel"][0] {
+    pealkiri,
+    u11,
+    u14
+  }
+`;
+
 export const HOOAJA_TULEMUSED_QUERY = `
   *[_type == "hooajaTulemused"] | order(jarjekord asc) {
     _id,
