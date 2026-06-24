@@ -24,7 +24,7 @@ function PunktiTable({ rows, klass }: { rows: PunktiRida[]; klass: "U11" | "U14"
   return (
     <div style={{ marginBottom: "48px" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-        <span style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)" }}>
+        <span style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", color: "#0a0a0a" }}>
           {klass} klass
         </span>
         <div style={{ flex: 1, height: "1px", background: "rgba(0,0,0,0.08)" }} />
@@ -46,7 +46,7 @@ function PunktiTable({ rows, klass }: { rows: PunktiRida[]; klass: "U11" | "U14"
               {ETAPID.map((roman) => (
                 <Fragment key={roman}>
                   <th style={{ ...TH, textAlign: "right", borderLeft: "1px solid rgba(0,0,0,0.06)" }}>Koht</th>
-                  <th style={{ ...TH, textAlign: "right" }}>Pkt</th>
+                  <th style={{ ...TH, textAlign: "right" }}>Punktid</th>
                 </Fragment>
               ))}
             </tr>
