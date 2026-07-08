@@ -7,11 +7,17 @@ const PROGRAM_LABEL: Record<string, string> = {
   "kardiakadeemia": "Kardiakadeemia",
 };
 
-const CONTACT_BLOCK = `
+const CONTACT_BLOCK_TR = `
   <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:24px">
     Lisainfo korral:<br>
     <a href="mailto:heikki@kartdago.ee" style="color:#0a0a0a">heikki@kartdago.ee</a><br>
     +372 5050858
+  </p>`;
+
+const CONTACT_BLOCK_AK = `
+  <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:24px">
+    Lisainfo korral:<br>
+    <a href="mailto:timo@kart.ee" style="color:#0a0a0a">timo@kart.ee</a>
   </p>`;
 
 export async function POST(req: NextRequest) {
@@ -52,7 +58,7 @@ export async function POST(req: NextRequest) {
             <tr><td style="font-size:13px;color:#888;padding:4px 0">Selgitus</td><td style="font-size:13px;font-weight:600;color:#0a0a0a">Talendid Rajale, ${etapp}, ${nimi}</td></tr>
           </table>
         </div>
-        ${CONTACT_BLOCK}
+        ${CONTACT_BLOCK_TR}
         <p style="font-size:13px;color:#888">Eesti Kardiliit · <a href="https://kart.ee" style="color:#888">kart.ee</a></p>
       </div>`;
   } else {
@@ -75,7 +81,7 @@ export async function POST(req: NextRequest) {
           Tere ${vastutava},<br><br>
           Oleme Teie registreerimistaotluse kätte saanud ja võtame Teiega ühendust esimesel võimalusel.
         </p>
-        ${CONTACT_BLOCK}
+        ${CONTACT_BLOCK_AK}
         <p style="font-size:13px;color:#888">Eesti Kardiliit · <a href="https://kart.ee" style="color:#888">kart.ee</a></p>
       </div>`;
   }
@@ -96,7 +102,7 @@ export async function POST(req: NextRequest) {
   try {
     await resend.emails.send({
       from: "Eesti Kardiliit <info@kart.ee>",
-      to: "heikki@kartdago.ee",
+      to: program === "kardiakadeemia" ? "timo@kart.ee" : "heikki@kartdago.ee",
       replyTo: body.email,
       subject: `Uus registreerimistaotlus – ${label}`,
       html: adminHtml,
