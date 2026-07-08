@@ -11,7 +11,7 @@ const CONTACT_BLOCK = `
   <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:24px">
     Lisainfo korral:<br>
     <a href="mailto:heikki@kartdago.ee" style="color:#0a0a0a">heikki@kartdago.ee</a><br>
-    +372 520 0657
+    +372 5050858
   </p>`;
 
 export async function POST(req: NextRequest) {
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
         <p style="font-size:18px;font-weight:600;color:#0a0a0a;margin-bottom:16px">Registreerimine vastu võetud!</p>
         <p style="font-size:14px;color:#555;line-height:1.7;margin-bottom:24px">
           Tere ${vastutava},<br><br>
-          Teie registreerimistaotlus Talendid Rajale 2026 <strong>${etapp}</strong> etapile on vastu võetud. Koha kinnitamiseks palume tasuda osalustasu alljärgnevatel andmetel.
+          Teie registreerimistaotlus Talendid Rajale 2026 <strong>${etapp}</strong> etapile on vastu võetud. Registreerimise kinnitamiseks palume tasuda osalustasu alljärgnevatel andmetel.
         </p>
         <div style="background:#f7f7f7;border-radius:12px;padding:20px 24px;margin-bottom:24px">
           <p style="font-size:11px;font-weight:600;color:#999;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 12px 0">Makseinfo</p>
