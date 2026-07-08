@@ -38,11 +38,20 @@ export async function POST(req: NextRequest) {
     ];
     autoReplyHtml = `
       <div style="font-family:system-ui,sans-serif;max-width:520px;margin:0 auto">
-        <p style="font-size:18px;font-weight:600;color:#0a0a0a;margin-bottom:16px">Aitäh registreerimast Talendid Rajale 2026 etapile!</p>
-        <p style="font-size:14px;color:#555;line-height:1.7;margin-bottom:16px">
+        <p style="font-size:18px;font-weight:600;color:#0a0a0a;margin-bottom:16px">Registreerimine vastu võetud!</p>
+        <p style="font-size:14px;color:#555;line-height:1.7;margin-bottom:24px">
           Tere ${vastutava},<br><br>
-          Täname registreerimast Talendid Rajale 2026 <strong>${etapp}</strong> etapile. Oleme Teie registreerimistaotluse kätte saanud ja võtame Teiega ühendust esimesel võimalusel.
+          Teie registreerimistaotlus Talendid Rajale 2026 <strong>${etapp}</strong> etapile on vastu võetud. Koha kinnitamiseks palume tasuda osalustasu alljärgnevatel andmetel.
         </p>
+        <div style="background:#f7f7f7;border-radius:12px;padding:20px 24px;margin-bottom:24px">
+          <p style="font-size:11px;font-weight:600;color:#999;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 12px 0">Makseinfo</p>
+          <table style="width:100%;border-collapse:collapse">
+            <tr><td style="font-size:13px;color:#888;padding:4px 0;width:110px">Summa</td><td style="font-size:13px;font-weight:600;color:#0a0a0a">€79</td></tr>
+            <tr><td style="font-size:13px;color:#888;padding:4px 0">Saaja</td><td style="font-size:13px;font-weight:600;color:#0a0a0a">MTÜ EKL Race</td></tr>
+            <tr><td style="font-size:13px;color:#888;padding:4px 0">IBAN</td><td style="font-size:13px;font-weight:600;color:#0a0a0a;font-family:monospace">EE982200221076412074</td></tr>
+            <tr><td style="font-size:13px;color:#888;padding:4px 0">Selgitus</td><td style="font-size:13px;font-weight:600;color:#0a0a0a">Talendid Rajale, ${etapp}, ${nimi}</td></tr>
+          </table>
+        </div>
         ${CONTACT_BLOCK}
         <p style="font-size:13px;color:#888">Eesti Kardiliit · <a href="https://kart.ee" style="color:#888">kart.ee</a></p>
       </div>`;
