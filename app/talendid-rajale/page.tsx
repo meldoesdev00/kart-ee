@@ -61,6 +61,10 @@ export default async function TalendidRajalePage() {
     else if (o.vanuseklass === "U14") acc[o.etappNr].u14.push(o);
     return acc;
   }, {});
+  const activeSeade = (seaded as EtappSeade[]).at(-1);
+  if (activeSeade && !osavotjadByEtapp[activeSeade.etappNr]) {
+    osavotjadByEtapp[activeSeade.etappNr] = { etappNimi: activeSeade.etappNimi, u11: [], u14: [] };
+  }
   const osavotjadEtapid = Object.entries(osavotjadByEtapp).sort(([a], [b]) => a.localeCompare(b));
   return (
     <>
@@ -509,6 +513,11 @@ export default async function TalendidRajalePage() {
                     {nimi}
                   </p>
                   <div className="section-grid-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px" }}>
+                    {data.u11.length === 0 && data.u14.length === 0 && (
+                      <p style={{ fontSize: "14px", color: "rgba(0,0,0,0.35)", fontStyle: "italic", gridColumn: "1 / -1" }}>
+                        Registreerimisi pole veel.
+                      </p>
+                    )}
                     {(["U11", "U14"] as const).map((klass) => {
                       const list = klass === "U11" ? data.u11 : data.u14;
                       if (list.length === 0) return null;
