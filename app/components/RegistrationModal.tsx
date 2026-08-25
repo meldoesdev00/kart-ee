@@ -22,7 +22,6 @@ type TalendidForm = { nimi: string; vanuseklass: string; kool: string; etapp: st
 type AkadeemiaForm = { nimi: string; vanus: string; pikkus: string; kaal: string; linn: string; vastutava: string; telefon: string; email: string };
 
 const ETAPID = [
-  "V etapp – LaitseRallyPark",
   "VI etapp – EST1 Karting Rapla",
 ];
 const VANUSEKLASSID = ["U11", "U14"];
